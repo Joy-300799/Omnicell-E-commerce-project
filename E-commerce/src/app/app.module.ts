@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -11,7 +11,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserSignUpComponent } from './user-login/user-sign-up/user-sign-up.component';
 import { HomeComponent } from './home/home.component';
-import { AdminComponent } from './admin/admin.component'
+import { AdminComponent } from './admin/admin.component';
+import { AddNewBookComponent } from './add-new-book/add-new-book.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import { AdminComponent } from './admin/admin.component'
     UserLoginComponent,
     UserSignUpComponent,
     HomeComponent,
-    AdminComponent
+    AdminComponent,
+    AddNewBookComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { AdminComponent } from './admin/admin.component'
     HttpClientModule,
     BrowserAnimationsModule,
     MatIconModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
