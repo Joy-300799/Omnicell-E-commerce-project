@@ -1,0 +1,33 @@
+.banner-header {
+    left: 40%;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: "Roboto";
+    position: absolute;
+    top: 22%;
+    color:white;
+}
+
+.banner-quote {
+    font-style: italic;
+    position: absolute;
+    top: 30%;
+    left: 27%;
+    font-size: 20px;
+    font-family: 'Satisfy', cursive;
+    color:rgb(255, 255, 255);
+    letter-spacing: 2px;
+}
+
+.header {
+    background-image: url(../../assets/aaron-burden-H8s0PF2rcQs-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.hr{
+    width:30%;
+     color:white;
+     margin-left:33%;
+     height:2px;
+}
