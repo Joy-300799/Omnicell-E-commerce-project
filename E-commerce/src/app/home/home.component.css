@@ -5,7 +5,7 @@
     font-family: "Roboto";
     position: absolute;
     top: 22%;
-    color:white;
+    color: white;
 }
 
 
@@ -16,7 +16,7 @@
     left: 27%;
     font-size: 20px;
     font-family: 'Satisfy', cursive;
-    color:rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
     letter-spacing: 2px;
 }
 
@@ -26,9 +26,43 @@
     background-size: 100% 100%;
 }
 
-.hr{
-    width:30%;
-     color:white;
-     margin-left:33%;
-     height:2px;
+.hr {
+    width: 30%;
+    color: white;
+    margin-left: 33%;
+    height: 2px;
+}
+
+.category-header {
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'sans-serif', cursive;
+    letter-spacing: 2px;
+}
+
+.books-container-latest {
+    display: flex;
+    justify-content: space-around;
+    /* border: 1px solid #333; */
+    height: 40%;
+}
+
+.book-img-latest {
+    height: 100%;
+    width: 75%;
+    border-radius: 10px;
+    margin-left: 45px;
+}
+
+.book-img-latest:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px #5f5f5d;
+
+}
+
+
+.img-div-latest {
+    /* border:1px solid #999; */
+    width: 27%
 }

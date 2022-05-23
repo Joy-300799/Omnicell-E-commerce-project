@@ -11,7 +11,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserSignUpComponent } from './user-login/user-sign-up/user-sign-up.component';
 import { HomeComponent } from './home/home.component';
-import { AdminComponent } from './admin/admin.component'
+import { AdminComponent } from './admin/admin.component';
+import { BookDetailsComponent } from './book-details/book-details.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import { AdminComponent } from './admin/admin.component'
     UserLoginComponent,
     UserSignUpComponent,
     HomeComponent,
-    AdminComponent
+    AdminComponent,
+    BookDetailsComponent
   ],
   imports: [
     BrowserModule,

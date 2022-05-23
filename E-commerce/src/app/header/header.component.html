@@ -2,13 +2,16 @@
 <header class="header sticky-top">
   <nav class="navbar navbar-expand-lg navbar-light bg-white py-1 shadow-sm">
     <div class="container"><a class="navbar-brand">
-        <img src="../../assets/public (1).png" width="250" alt="" class="d-inline-block align-middle mr-2" routerLink="">
+        <img src="../../assets/public (1).png" width="250" alt="" class="d-inline-block align-middle mr-2"
+          routerLink="">
       </a>
     </div>
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item active"><a class="nav-link home">About</a></li>
-      <li class="nav-item active"><a class="nav-link BooksByGenre">Books By Genre</a></li>
-      
+    <ul>
+      <form class="nosubmit">
+        <input class="nosubmit" type="search" placeholder="Search for books.">
+      </form>
+      <li class="nav-item"><a class="nav BooksByGenre">Category</a></li>
+      <li class="nav-item"><a class="nav home">About</a></li>
     </ul>
 
     <!-- <form class="d-flex">
@@ -16,13 +19,10 @@
       <button class="btn btn-outline-primary" type="submit">Search</button>
     </form> -->
 
-    <form class="nosubmit">
-      <input class="nosubmit" type="search" placeholder="Search for books.">
-    </form>
 
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item"><a class="nav-link link" routerLink="/admin">Admin</a></li>
-      <li class="nav-item"><button class="btn btn-primary login" routerLink="/login">Login</button></li>
+      <li class="nav-item"><a class="nav" routerLink="/admin">Admin</a></li>
+      <li class="nav-item"><button class="btn-primary login" routerLink="/login" [state]="{flag: true}">Login</button></li>
     </ul>
   </nav>
 </header>
