@@ -397,7 +397,7 @@ h2 {
 
 .half,
 .half .container>.row {
-    height: 100vh;
+    height: 89vh;
     min-height: 700px;
 }
 

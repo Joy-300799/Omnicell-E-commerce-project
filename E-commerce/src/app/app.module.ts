@@ -12,7 +12,11 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { UserSignUpComponent } from './user-login/user-sign-up/user-sign-up.component';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
+
 import { AddNewBookComponent } from './add-new-book/add-new-book.component'
+
+import { BookDetailsComponent } from './book-details/book-details.component'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +25,11 @@ import { AddNewBookComponent } from './add-new-book/add-new-book.component'
     UserSignUpComponent,
     HomeComponent,
     AdminComponent,
-    AddNewBookComponent
+
+    AddNewBookComponent,
+
+    BookDetailsComponent
+
   ],
   imports: [
     BrowserModule,

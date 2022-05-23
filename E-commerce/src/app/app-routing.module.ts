@@ -5,13 +5,20 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { UserSignUpComponent } from './user-login/user-sign-up/user-sign-up.component';
 import { AdminComponent } from './admin/admin.component';
+
 import { AddNewBookComponent } from './add-new-book/add-new-book.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: UserLoginComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'bookForm', component: AddNewBookComponent }
+
+  { path: 'bookForm', component: AddNewBookComponent },
+
+  { path: 'signup', component: UserLoginComponent },
+  { path: 'bookDescription', component: BookDetailsComponent },
+
 ];
 
 @NgModule({
