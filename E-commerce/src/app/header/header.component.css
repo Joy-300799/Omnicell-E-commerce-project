@@ -110,9 +110,10 @@ form.nosubmit {
     border: none;
     padding: 0;
     position: absolute;
-    left: 41%;
+    left: 21%;
     top: 27%;
 }
+
 
 input.nosubmit {
     width: 260px;

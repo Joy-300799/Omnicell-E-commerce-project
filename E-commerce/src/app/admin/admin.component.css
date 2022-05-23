@@ -9,7 +9,7 @@
     -o-transition: all 0.4s;
     -moz-transition: all 0.4s;
   }
-  
+
   a:focus {
       outline: none !important;
   }
@@ -95,7 +95,7 @@
   
   .container-login100 {
     width: 100%;  
-    min-height: 100vh;
+    min-height: 89vh;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -106,14 +106,11 @@
     align-items: center;
     padding: 15px;
     background: #9053c7;
-    background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-    background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-    background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
     background: linear-gradient(-135deg, #c850c0, #4158d0);
   }
   
   .wrap-login100 {
-    width: 960px;
+width:70%;
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
@@ -125,7 +122,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 177px 130px 33px 95px;
+    padding: 100px 130px 100px 95px;
+ 
   }
   
   /*------------------------------------------------------------------
@@ -154,7 +152,11 @@
   
     width: 100%;
     display: block;
-    padding-bottom: 54px;
+    padding-bottom: 5px;
+  }
+
+  hr{
+    margin-bottom:50px;
   }
   
   
