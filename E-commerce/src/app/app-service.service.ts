@@ -10,7 +10,7 @@ export class AppServiceService {
   //   this.loginBtnClicked = false;
   // }
 
-  url = "http://localhost:8080"
+  url = "http://localhost:8080";
 
   constructor(private http: HttpClient) { }
 
