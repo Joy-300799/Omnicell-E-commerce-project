@@ -57,7 +57,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter{
 			.disable()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			.authorizeRequests()
-			.antMatchers("/login", "/signup","/all")
+			.antMatchers("/login", "/signup","/all","/getAllBooks","/addBook","/addBookInCart","/removeBookFromCart")
 			.permitAll()
 		.anyRequest()
 		.authenticated();

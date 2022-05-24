@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="userDetails")
 public class UserModel {
-	
+
 	@Id
 	private ObjectId id;
 	private String username;
@@ -51,6 +51,8 @@ public class UserModel {
 		this.cart.remove(book);
 	}
 	
-	
+	public List<BookModel> getCart() {
+		return cart;
+	}
 	
 }

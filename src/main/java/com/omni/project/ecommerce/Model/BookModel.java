@@ -19,6 +19,8 @@ public class BookModel {
 	private int quantity;
 	private double price;
 	private String bookImgSrc;
+	private String language;
+	private int pages;
 	
 	
 	public BookModel(String bookName,
@@ -27,7 +29,9 @@ public class BookModel {
 					double price,
 					int quantity,
 					List<String> genres,
-					String bookImgSrc) {
+					String bookImgSrc,
+					String language,
+					int pages) {
 		this.id = new ObjectId();
 		this.bookName = bookName;
 		this.authorName = authorName;
@@ -36,8 +40,42 @@ public class BookModel {
 		this.quantity = quantity;
 		this.genres = genres;
 		this.bookImgSrc = bookImgSrc;
+		this.language = language;
+		this.pages = pages;
 	}
 	
+	
+	
+	public String getLanguage() {
+		return language;
+	}
+
+
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+
+
+	public int getPages() {
+		return pages;
+	}
+
+
+
+	public void setPages(int pages) {
+		this.pages = pages;
+	}
+
+
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+
+
 	public void addBookQuantity(int qty) {
 		this.quantity+=qty;
 	}
@@ -115,7 +153,7 @@ public class BookModel {
             return false;
           
         BookModel book = (BookModel) obj;
-        return (book.bookName == this.bookName && book.authorName == this.authorName);
+        return (book.bookName.equals(this.bookName) && book.authorName.equals(this.authorName));
 	}
 	
 	

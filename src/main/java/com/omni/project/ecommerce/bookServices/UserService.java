@@ -27,6 +27,10 @@ public class UserService {
 		return this.repo.findAll();
 	}
 	
+	public void updateUser(UserModel user) {
+		this.repo.save(user);
+	}
+	
 	public boolean login(String username, String password) {
 		UserModel user = repo.findByUsernameAndPassword(username, password);
 		return user != null;

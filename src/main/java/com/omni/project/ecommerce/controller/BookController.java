@@ -16,7 +16,7 @@ import com.omni.project.ecommerce.Model.BookModel;
 import com.omni.project.ecommerce.bookServices.BookServiceImpl;
 
 @RestController
-@CrossOrigin(origins="http://localhost:8080")
+@CrossOrigin(origins="http://localhost:4200")
 public class BookController {
 	
 	@Autowired
