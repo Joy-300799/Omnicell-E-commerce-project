@@ -8,7 +8,7 @@
                     <h3>{{flag?"Login to ":"Sign Up "}}<strong>BookShelf</strong></h3>
                     <p class="mb-6"><i>{{flag?"Login to the world of books and take away your choice with a smile.":"Register yourself and experience the serenity of the books and their words."}}</i></p>
                     <br>
-                    <form  method="post" (ngSubmit)="flag?handleLogin():handleRegister()">
+                    <form (ngSubmit)="flag?handleLogin():handleSignUp()">
                         <div class="form-group first">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" placeholder="Your Username" id="username">
@@ -21,12 +21,11 @@
                             <label for="password">Re-enter Password</label>
                             <input type="password" class="form-control" placeholder="Your Password" id="password">
                         </div>
-                        <button type="submit" class="login-btn">{{flag?"Login":"Register"}}</button>
+                        <button type="submit" class="login-btn">{{flag?"Login":"Sign Up"}}</button>
                         <br>
                         <br>
-                        <hr>
-                        <span *ngIf="flag">Don't have an account? <strong (click)="routerRegister()" routerLink="signup" type="button" id="sign-up">Sign
-                                Up</strong></span>
+                        <hr style="margin-bottom:10px">
+                        <span *ngIf="flag">Don't have an account? <strong (click)="routerSignUp()" routerLink="signup" type="button" id="sign-up">Sign Up</strong></span>
                                 <span *ngIf="!flag">Already have an account? <strong (click)="routerLogin()" routerLink="login" type="button" id="login">login</strong></span>
                     </form>
                 </div>
@@ -69,11 +68,6 @@
 </div> -->
 
 
-
-
-
-
-
 <!-- <div class="outer-div">
     <h1><span>Log in to your account</span>
     </h1>
@@ -95,7 +89,6 @@
         </form>
     </div>
 </div> -->
-
 
 
 <!-- <a href="https://front.codes/" class="logo" target="_blank">

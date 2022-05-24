@@ -14,14 +14,14 @@ export class UserLoginComponent implements OnInit {
     this.flag = history.state.flag;
   }
   handleLogin():void {}
-  handleRegister():void {}
+  handleSignUp():void {}
   
   routerLogin():void {
-    this.router.navigateByUrl("login");
     this.flag = true;
+    this.router.navigateByUrl("login");
   }
-  routerRegister():void {
-    this.router.navigateByUrl("signup");
+  routerSignUp():void {
     this.flag = false;
+    this.router.navigateByUrl("signup");
   }
 }

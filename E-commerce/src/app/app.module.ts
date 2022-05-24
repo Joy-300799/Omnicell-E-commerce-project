@@ -12,7 +12,9 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { UserSignUpComponent } from './user-login/user-sign-up/user-sign-up.component';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
-import { BookDetailsComponent } from './book-details/book-details.component'
+import { BookDetailsComponent } from './book-details/book-details.component';
+import { CartComponent } from './cart/cart.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,9 @@ import { BookDetailsComponent } from './book-details/book-details.component'
     UserSignUpComponent,
     HomeComponent,
     AdminComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    CartComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
