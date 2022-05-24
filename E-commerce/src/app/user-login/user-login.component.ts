@@ -18,13 +18,16 @@ export class UserLoginComponent implements OnInit {
   ngOnInit(): void {
     this.flag = history.state.flag;
   }
+
   handleLogin(): void {
     this.service.login(new UsernamePassword(this.username, this.firstPassword)).subscribe({
       next: (response) => console.log(response),
       error: (error) => console.log(error),
     });
   }
-  handleRegister(): void {
+
+
+  handleSignUp(): void {
     if (this.firstPassword === this.secondPassword) {
       this.service.signUp(new UsernamePassword(this.username, this.firstPassword)).subscribe({
         next: (response) => console.log(response),
@@ -34,14 +37,16 @@ export class UserLoginComponent implements OnInit {
   }
 
   routerLogin(): void {
-    this.router.navigateByUrl("login");
+
     this.flag = true;
-  }
-  routerRegister(): void {
-    this.router.navigateByUrl("signup");
-    this.flag = false;
+    this.router.navigateByUrl("login");
   }
 
+  routerSignUp(): void {
+
+    this.flag = false;
+    this.router.navigateByUrl("signup");
+  }
 
 }
 
@@ -54,3 +59,5 @@ class UsernamePassword {
     this.password = password;
   }
 }
+
+

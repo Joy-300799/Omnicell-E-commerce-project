@@ -43,7 +43,7 @@
 
 .books-container-latest {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     /* border: 1px solid #333; */
     height: 40%;
 }
@@ -53,16 +53,32 @@
     width: 75%;
     border-radius: 10px;
     margin-left: 45px;
+    backface-visibility: hidden;
 }
+
+
 
 .book-img-latest:hover {
     cursor: pointer;
     box-shadow: 0 0 10px #5f5f5d;
-
+    transition: 0.2s ease-out;
+    transform: scale(1.1);
 }
 
+.book-image-latest:hover > .text{
+    color:white;
+}
 
 .img-div-latest {
     /* border:1px solid #999; */
-    width: 27%
+    width: 27%;
 }
+
+/* .img-div-latest figure img {
+	opacity: 1;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.img-div-latest figure:hover img {
+	opacity: .5;
+} */
