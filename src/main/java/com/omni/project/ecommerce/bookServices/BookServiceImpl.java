@@ -14,12 +14,12 @@ public class BookServiceImpl implements BookService {
 
 	@Autowired
 	BookRepository bookrepo;
-	
+
 	@Override
 	public List<BookModel> getBooksByAuthorName(String authorName) {
 		return this.bookrepo.findByAuthorName(authorName);
 	}
-	
+
 	@Override
 	public List<BookModel> getAllBooks() {
 		return this.bookrepo.findAll();
@@ -32,18 +32,18 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public BookModel getBookByName(String name) {
-		
+
 		return this.bookrepo.findByBookName(name);
 	}
 
 	@Override
 	public void addBook(BookModel book) {
-		bookrepo.insert(book);		
+		bookrepo.insert(book);
 	}
 
 	@Override
 	public void updateBook(BookModel updatedBook, String bookName) {
-		BookModel book =  bookrepo.findByBookName(bookName);
+		BookModel book = bookrepo.findByBookName(bookName);
 		book.setAuthorName(updatedBook.getAuthorName());
 		book.setBookImgSrc(updatedBook.getBookImgSrc());
 		book.setBookName(updatedBook.getBookName());
@@ -51,19 +51,13 @@ public class BookServiceImpl implements BookService {
 		book.setGenres(updatedBook.getGenres());
 		book.setPrice(updatedBook.getPrice());
 		bookrepo.save(book);
-		
+
 	}
 
 	@Override
 	public void deleteBook(String bookName) {
 		bookrepo.deleteBookModelByBookName(bookName);
-		
+
 	}
-	
-	public void getList(String genres) {
-		bookrepo.findByGenresIn(Arrays.asList(genres));
-	}
-	
-	
-	
+
 }
