@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BookStock } from './add-new-book/add-new-book.component';
+import {BookStock} from "../app/admin/admin-dashboard/admin-dashboard.component";
 
 @Injectable({
   providedIn: 'root',
@@ -11,13 +11,13 @@ export class AppServiceService {
   //   this.loginBtnClicked = false;
   // }
 
-  url = "http://localhost:8080";
+  url = 'http://localhost:8080';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAllBooks() {
     // return this.http.get(this.url + "/getAllBooks");
-    return this.http.get(this.url + "/getAllBookStock");
+    return this.http.get(this.url + '/getAllBookStock');
   }
 
   addBook(bookStock: BookStock) {
@@ -25,6 +25,6 @@ export class AppServiceService {
   }
 
   getBook(bookName: string) {
-    return this.http.get(this.url + "/getBookStock?bookName=" + bookName);
+    return this.http.get(this.url + '/getBookStock?bookName=' + bookName);
   }
 }
