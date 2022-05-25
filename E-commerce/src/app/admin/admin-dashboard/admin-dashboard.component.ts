@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { AppServiceService } from '../../app-service.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -10,9 +12,17 @@ export class AdminDashboardComponent implements OnInit {
   viewAllBooksClicked: boolean = false;
   favClicked: boolean = false;
   signOutClicked: boolean = false;
-  constructor() {}
 
-  ngOnInit(): void {}
+  bookList: any;
+
+  constructor(private service: AppServiceService) { }
+
+  ngOnInit(): void {
+    this.service.getAllBooks().subscribe({
+      next: (data) => this.bookList = data,
+      error: (error) => console.log(error)
+    })
+  }
 
   toggleAddBook() {
     this.addBookClicked = true;
@@ -31,4 +41,101 @@ export class AdminDashboardComponent implements OnInit {
     this.addBookClicked = false;
     this.viewAllBooksClicked = false;
   }
+
+  newBookForm = new FormGroup({
+    bookName: new FormControl(),
+    authorName: new FormControl(),
+    description: new FormControl(),
+    genre: new FormControl(),
+    language: new FormControl(),
+    pages: new FormControl(),
+    quantity: new FormControl(),
+    price: new FormControl(),
+    bookImgSrc: new FormControl(),
+  });
+
+  editBook() {
+
+  }
+
+  deleteBook(bookName: string, index: number) {
+    this.service.deleteBook(bookName).subscribe({
+      next: (data) => {
+        // this.bookList=this.bookList.splice(index, 1),
+          // console.log(data)
+        // this.service.getAllBooks().subscribe({
+        //   next:(data)=>{this.bookList=data}
+        // })
+      },
+      error: (error) => console.log(error)
+    });
+    this.bookList.splice(index, 1);
+
+  }
+
+  onSubmit() {
+    console.log(this.newBookForm.value);
+    let book = new Book(
+      this.newBookForm.value.bookName,
+      this.newBookForm.value.authorName,
+      this.newBookForm.value.description,
+      this.newBookForm.value.genre,
+      this.newBookForm.value.price,
+      this.newBookForm.value.bookImgSrc,
+      this.newBookForm.value.language,
+      this.newBookForm.value.pages
+    );
+    this.service
+      .addBook(new BookStock(book, this.newBookForm.value.quantity))
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
+  }
 }
+
+export class Book {
+  bookName: string;
+  authorName: string;
+  description: string;
+  genre: string;
+  price: number;
+  bookImgSrc: string;
+  language: string;
+  pages: number;
+
+  constructor(
+    bookName: string,
+    authorName: string,
+    description: string,
+    genre: string,
+    price: number,
+    bookImgSrc: string,
+    language: string,
+    pages: number
+  ) {
+    this.bookName = bookName;
+    this.authorName = authorName;
+    this.description = description;
+    this.genre = genre;
+    this.price = price;
+    this.bookImgSrc = bookImgSrc;
+    this.language = language;
+    this.pages = pages;
+  }
+}
+
+export class BookStock {
+  book: Book;
+  quantity: number;
+
+  constructor(book: Book, quantity: number) {
+    this.book = book;
+    this.quantity = quantity;
+  }
+}
+

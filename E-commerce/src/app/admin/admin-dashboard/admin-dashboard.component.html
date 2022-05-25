@@ -24,62 +24,64 @@
 <!--Add new book-->
 <div class="wrapper" *ngIf="addBookClicked">
     <div class="section">
-        <form #adminAddBooks="ngForm" (ngSubmit)="adminAddBooks.resetForm()">
-            <!-- 2 column grid layout with text inputs for the first and last names -->
+        <form [formGroup]="newBookForm" (ngSubmit)="onSubmit()">
+
             <div class="form-outline mb-4">
-                <input type="text" id="form6Example5" class="form-control" placeholder="Book Name" required />
-                <!-- <label class="form-label" for="form6Example5">Number of pages</label> -->
+                <input type="text" id="form6Example5" formControlName="bookName" class="form-control"
+                    placeholder="Book Name" required />
+
             </div>
 
             <div class="form-outline mb-4">
-                <input type="text" id="form6Example5" class="form-control" placeholder="Author Name" required />
-                <!-- <label class="form-label" for="form6Example5">Number of pages</label> -->
+                <input type="text" id="form6Example5" formControlName="authorName" class="form-control"
+                    placeholder="Author Name" required />
             </div>
 
             <div class="form-outline mb-4">
-                <input type="text" id="form6Example5" class="form-control" placeholder="Genre" required />
-                <!-- <label class="form-label" for="form6Example5">Number of pages</label> -->
+                <input type="text" id="form6Example5" formControlName="genre" class="form-control" placeholder="Genre"
+                    required />
             </div>
 
             <!-- Text input -->
             <div class="form-outline mb-4">
-                <textarea class="form-control" id="form6Example7" rows="4" placeholder="Description"
-                    required></textarea>
-
-                <!-- <label class="form-label" for="form6Example3">Company name</label> -->
+                <textarea class="form-control" id="form6Example7" rows="4" formControlName="description"
+                    placeholder="Description" required></textarea>
             </div>
 
 
             <div class="row mb-4">
                 <div class="col">
                     <div class="form-outline">
-                        <input type="number" id="form6Example1" class="form-control" placeholder="price" required/>
-                        <!-- <label class="form-label" for="form6Example1">Book Name</label> -->
+                        <input type="number" id="form6Example1" formControlName="price" class="form-control"
+                            placeholder="price" required />
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-outline">
-                        <input type="number" id="form6Example2" class="form-control" placeholder="quantity" required/>
-                        <!-- <label class="form-label" for="form6Example2">Author Name</label> -->
+                        <input type="number" id="form6Example2" formControlName="quantity" class="form-control"
+                            placeholder="quantity" required />
                     </div>
                 </div>
             </div>
             <!-- page number input -->
 
             <div class="form-outline mb-4">
-                <input type="number" id="form6Example5" class="form-control" placeholder="Number of pages" required/>
-                <!-- <label class="form-label" for="form6Example5">Number of pages</label> -->
+                <input type="number" id="form6Example5" formControlName="pages" class="form-control"
+                    placeholder="Number of pages" required />
+
             </div>
 
             <!-- language input -->
             <div class="form-outline mb-4">
-                <input type="number" id="form6Example6" class="form-control" placeholder="Language" required/>
-                <!-- <label class="form-label" for="form6Example6">Price</label> -->
+                <input type="text" id="form6Example6" formControlName="language" class="form-control"
+                    placeholder="Language" required />
+
             </div>
 
             <div class="form-outline mb-4">
-                <input type="text" id="form6Example6" class="form-control" placeholder="Cover picture link" required/>
-                <!-- <label class="form-label" for="form6Example6">Price</label> -->
+                <input type="text" id="form6Example6" formControlName="bookImgSrc" class="form-control"
+                    placeholder="Cover picture link" required />
+
             </div>
 
             <!-- add button -->
@@ -93,21 +95,21 @@
 <!--view All book-->
 <div class="wrapper" *ngIf="viewAllBooksClicked">
     <div class="section-viewAllBooks" style="display:flex;flex-direction:column;">
-        <div class="single-book-modal">
-            <img src="../../../assets/zero-to-one.jpg" alt="">
-            <div class="single-book-details">
-                <h1>Zero To One</h1>
-                <h3>-Chetan Bhagat</h3>
+        <div style="margin-top:100px;"></div>
+
+        <div class="single-book-modal" *ngFor="let item of bookList,index as i">
+            <img src={{item.book.bookImgSrc}} alt="" style="height:170px; width:120px">
+            <div class="single-book-details" >
+                <h1>{{item.book.bookName}}</h1>
+                <h3>-{{item.book.authorName}}</h3>
                 <hr>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum officiis minima, ducimus
-                    aperiam, itaque eveniet rem, porro dolorem voluptatibus excepturi eos dignissimos. Aut nam
-                    dignissimos doloremque ducimus, earum reiciendis!</p>
-                <p>language: English</p>
+                <p>language: {{item.book.language}}</p>
+                <p>price: {{item.book.price|currency:"INR"}}</p>
                 <div class="availability">
                     <p>Out of stock</p>
                 </div>
-                <img src="../../../assets/pencil.png" alt="" id="edit">
-                <img src="../../../assets/bin.png" alt="" id="delete">
+                <img src="../../../assets/pencil.png" alt="" id="edit" (click)="editBook()">
+                <img src="../../../assets/bin.png" alt="" id="delete" (click)="deleteBook(item.book.bookName,i)">
             </div>
             <div>
 

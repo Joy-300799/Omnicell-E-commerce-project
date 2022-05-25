@@ -16,6 +16,8 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { CartComponent } from './cart/cart.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { FooterComponent } from './footer/footer.component';
+import { AddNewBookComponent } from './admin/add-new-book/add-new-book.component';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { FooterComponent } from './footer/footer.component';
     AdminDashboardComponent,
     BookDetailsComponent,
     FooterComponent,
+    AddNewBookComponent,
+    CategoryComponent,
   ],
 
   imports: [

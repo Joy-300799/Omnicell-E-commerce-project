@@ -7,22 +7,39 @@
         </header>
     </div>
 </section>
+<div *ngIf="searchedWord.length">
+    <hr style="margin-top:20px">
+    <h1 class="category-header">Searched Books</h1>
+    <hr style="margin-bottom:20px">
+
+    <div class="books-container-latest" style="display:flex;">
+
+        <div class="img-div-latest" *ngFor="let item of searchList">
+            <img src={{item.book.bookImgSrc}} class="book-img-latest" (click)="goToBookDetailPage(item.book.bookName)"
+                alt="">
 
 
-<hr style="margin-top:20px">
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- <hr style="margin-top:20px">
 <h1 class="category-header">All Books</h1>
 <hr style="margin-bottom:20px">
 
 <div class="books-container-latest" style="display:flex;">
 
-    <div class="img-div-latest" *ngFor="let item of searchList">
+    <div class="img-div-latest" *ngFor="let item of bookList">
         <img src={{item.book.bookImgSrc}} class="book-img-latest" (click)="goToBookDetailPage(item.book.bookName)"
             alt="">
 
 
     </div>
 
-</div>
+</div> -->
 
 <hr style="margin-top:20px">
 <h1 class="category-header">Latest Releases</h1>

@@ -9,15 +9,16 @@ import { SearchService } from '../search.service';
 export class HeaderComponent implements OnInit {
 
   searchWord: string = "";
+  key:any;
 
   loginBtnClicked: boolean = true;
   constructor(private searchService: SearchService) { }
 
   ngOnInit(): void {
+    this.key = this.searchService.logout
   }
 
   search() {
-    console.log(this.searchWord);
     this.searchService.search(this.searchWord);
   }
 

@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
   latestReleases: Array<any> = [];
   mostRecommended: Array<any> = [];
 
+  searchedWord : string = "";
+
   constructor(private service: AppServiceService, private router: Router, private searchService: SearchService) { }
 
   ngOnInit(): void {
@@ -36,10 +38,11 @@ export class HomeComponent implements OnInit {
         // console.log("completed");
       }
     })
+
     this.searchService.currentword.subscribe({
       next: (data: string) => {
+        this.searchedWord = data;
         this.searchList = this.bookList.filter((book: any) => {
-          // console.log(book.book.bookName);
           return book.book.bookName.toLocaleLowerCase().includes(data.toLowerCase());
         })
       },

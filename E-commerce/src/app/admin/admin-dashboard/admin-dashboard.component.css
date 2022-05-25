@@ -106,8 +106,8 @@ nav ul li a:hover:before {
     /* border: 2px solid #444; */
     display: flex;
     height: 200px;
-    position: absolute;
-    left: 20%;
+    position: relative;
+    left: 10%;
     padding:20px;
     width:70%;
     margin-bottom:30px;
@@ -119,27 +119,26 @@ transition:0.3s ease;
 }
 
 .single-book-modal img{
-    margin-left:50px;
+    margin-left:10px;
 }
 
 .single-book-details{
-
     margin-left:50px;
-    width:70%;
+    width:80%;
 }
 
 .availability{
     position: absolute;
     top: 73%;
     left: 72%;
-    border: 2px solid grey;
+    border: none;
     padding: 1px;
     background-color: #f00202;
     color: white;
 }
 
 #edit{
-    top: 19%;
+    top: 16%;
     position: absolute;
     right: 4%;
     height: 30px;
@@ -154,7 +153,7 @@ transition:0.3s ease;
 }
 
 h1{
-    font-size: 25px;
+    font-size: 22px;
     font-family: Roboto;
     font-weight:bold;
 }
