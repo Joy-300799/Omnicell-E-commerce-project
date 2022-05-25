@@ -9,8 +9,8 @@ import { SearchService } from '../search.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  bookList: any;
-  searchList: any;
+  bookList: any = [];
+  searchList: any = [];
   latestReleases: Array<any> = [];
   mostRecommended: Array<any> = [];
 
@@ -38,22 +38,10 @@ export class HomeComponent implements OnInit {
     })
     this.searchService.currentword.subscribe({
       next: (data: string) => {
-        this.searchList = [...this.bookList];
-        console.log("booklist");
-        console.log(this.bookList);
-        if (data) {
-          for (let i = 0; i < this.searchList.length; i++) {
-            if (!this.searchList[i].book.bookName.toLowerCase().includes(data.toLowerCase())) {
-              console.log(this.searchList[i].book.bookName);
-              console.log(this.searchList[i].book.bookName.toLowerCase().includes(data.toLowerCase()));
-              console.log(data.toLowerCase());
-              this.searchList.splice(i, 1);
-            } else {
-              // console.log(this.searchList[i]);
-            }
-          }
-        }
-        console.log(this.searchList);
+        this.searchList = this.bookList.filter((book: any) => {
+          // console.log(book.book.bookName);
+          return book.book.bookName.toLocaleLowerCase().includes(data.toLowerCase());
+        })
       },
       error: (error) => console.log(error),
     })
@@ -68,3 +56,5 @@ export class HomeComponent implements OnInit {
   }
 
 }
+
+

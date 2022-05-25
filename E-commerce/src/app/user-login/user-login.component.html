@@ -20,7 +20,7 @@
                         </div>
                         {{username}}
                         {{firstPassword}}
-                        {{secondPassword}} -->
+                        {{secondPassword}}
                         <div class="form-group last mb-3">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" placeholder="Your Password" id="password1"
@@ -33,15 +33,6 @@
                         </div>
 
                         <p style="color:red" *ngIf="firstPassword!=secondPassword">password not matching</p>
-                        <button type="submit" class="login-btn">{{flag?"Login":"Sign Up"}}</button>
-                        <br>
-                        <br>
-                        <hr>
-                        <span *ngIf="flag">Don't have an account? <strong (click)="routerSignUp()" routerLink="signup"
-                                type="button" id="sign-up">Sign
-                                Up</strong></span>
-                        <span *ngIf="!flag">Already have an account? <strong (click)="routerLogin()" routerLink="login"
-                                type="button" id="login">login</strong></span> -->
 
                         <button type="submit" class="login-btn">{{flag?"Login":"Sign Up"}}</button>
                         <br>
