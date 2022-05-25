@@ -143,6 +143,7 @@ input.nosubmit {
     display: flex;
     align-items: center;
     background-color: rgb(16, 148, 160);
+    /* background-color:transparent; */
     z-index: 1;
 }
 

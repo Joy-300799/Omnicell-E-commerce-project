@@ -12,17 +12,12 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { UserSignUpComponent } from './user-login/user-sign-up/user-sign-up.component';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
-<<<<<<< HEAD
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { CartComponent } from './cart/cart.component';
-import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component'
-=======
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { AddNewBookComponent } from './add-new-book/add-new-book.component';
+import { FooterComponent } from './footer/footer.component';
 
-import { AddNewBookComponent } from './add-new-book/add-new-book.component'
-
-import { BookDetailsComponent } from './book-details/book-details.component'
-
->>>>>>> 8a21252d8a7c83bcf5044abb042027ce9ea8074a
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,18 +26,14 @@ import { BookDetailsComponent } from './book-details/book-details.component'
     UserSignUpComponent,
     HomeComponent,
     AdminComponent,
-<<<<<<< HEAD
     BookDetailsComponent,
     CartComponent,
-    AdminDashboardComponent
-=======
-
+    AdminDashboardComponent,
     AddNewBookComponent,
-
-    BookDetailsComponent
-
->>>>>>> 8a21252d8a7c83bcf5044abb042027ce9ea8074a
+    BookDetailsComponent,
+    FooterComponent,
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -51,9 +42,9 @@ import { BookDetailsComponent } from './book-details/book-details.component'
     BrowserAnimationsModule,
     MatIconModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

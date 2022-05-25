@@ -9,7 +9,7 @@ import { AuthenticationService } from '../authentication.service';
   styleUrls: ['./user-login.component.css'],
 })
 export class UserLoginComponent implements OnInit {
-  constructor(private router: Router, private service: AuthenticationService) { }
+  constructor(private router: Router, private service: AuthenticationService) {}
   flag: boolean = true;
   username: any;
   firstPassword: any;
@@ -20,34 +20,34 @@ export class UserLoginComponent implements OnInit {
   }
 
   handleLogin(): void {
-    this.service.login(new UsernamePassword(this.username, this.firstPassword)).subscribe({
-      next: (response) => console.log(response),
-      error: (error) => console.log(error),
-    });
+    this.service
+      .login(new UsernamePassword(this.username, this.firstPassword))
+      .subscribe({
+        next: (response) => console.log(response),
+        error: (error) => console.log(error),
+      });
   }
-
 
   handleSignUp(): void {
     if (this.firstPassword === this.secondPassword) {
-      this.service.signUp(new UsernamePassword(this.username, this.firstPassword)).subscribe({
-        next: (response) => console.log(response),
-        error: (error) => console.log(error),
-      })
+      this.service
+        .signUp(new UsernamePassword(this.username, this.firstPassword))
+        .subscribe({
+          next: (response) => console.log(response),
+          error: (error) => console.log(error),
+        });
     }
   }
 
   routerLogin(): void {
-
     this.flag = true;
-    this.router.navigateByUrl("login");
+    this.router.navigateByUrl('login');
   }
 
   routerSignUp(): void {
-
     this.flag = false;
-    this.router.navigateByUrl("signup");
+    this.router.navigateByUrl('signup');
   }
-
 }
 
 class UsernamePassword {
@@ -59,5 +59,3 @@ class UsernamePassword {
     this.password = password;
   }
 }
-
-

@@ -4,7 +4,7 @@
     font-weight: bold;
     font-family: "Roboto";
     position: absolute;
-    top: 22%;
+    top: 16%;
     color: white;
 }
 
@@ -12,7 +12,7 @@
 .banner-quote {
     font-style: italic;
     position: absolute;
-    top: 30%;
+    top: 23%;
     left: 27%;
     font-size: 20px;
     font-family: 'Satisfy', cursive;
@@ -27,9 +27,11 @@
 }
 
 .hr {
+    position: absolute;
     width: 30%;
-    color: white;
-    margin-left: 33%;
+    color: rgb(3, 0, 180);
+    margin-left: 27%;
+    top: 23%;
     height: 2px;
 }
 
