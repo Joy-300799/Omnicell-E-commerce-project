@@ -10,174 +10,52 @@
                             smile.":"Register yourself and experience the serenity of the books and their words."}}</i>
                     </p>
                     <br>
-                    <<<<<<< HEAD <form method="post" (ngSubmit)="flag?handleLogin():handleRegister()">
 
-                        <form (ngSubmit)="flag?handleLogin():handleSignUp()">
+                    <form (ngSubmit)="flag?handleLogin():handleSignUp()">
 
-                            <div class="form-group first">
-                                <label for="username">Username</label>
-                                <input type="text" class="form-control" placeholder="Your Username" id="username"
-                                    name="username" [(ngModel)]="username">
-                            </div>
-                            {{username}}
-                            {{firstPassword}}
-                            {{secondPassword}}
-                            <div class="form-group last mb-3">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" placeholder="Your Password" id="password"
-                                    name="firstPassword" [(ngModel)]="firstPassword">
-                            </div>
-                            <div class="form-group last mb-3" *ngIf="!flag">
-                                <label for="password">Re-enter Password</label>
-                                <input type="password" class="form-control" placeholder="Your Password" id="password"
-                                    name="secondPassword" [(ngModel)]="secondPassword">
-                            </div>
-
-                            <p style="color:red" *ngIf="firstPassword!=secondPassword">password not matching</p>
-                            <button type="submit" class="login-btn">{{flag?"Login":"Register"}}</button>
-                            <br>
-                            <br>
-                            <hr>
-                            <span *ngIf="flag">Don't have an account? <strong (click)="routerRegister()"
-                                    routerLink="signup" type="button" id="sign-up">Sign
-                                    Up</strong></span>
-                            <span *ngIf="!flag">Already have an account? <strong (click)="routerLogin()"
-                                    routerLink="login" type="button" id="login">login</strong></span>
-
-                            <button type="submit" class="login-btn">{{flag?"Login":"Sign Up"}}</button>
-                            <br>
-                            <br>
-                            <hr style="margin-bottom:10px">
-                            <span *ngIf="flag">Don't have an account? <strong (click)="routerSignUp()"
-                                    routerLink="signup" type="button" id="sign-up">Sign Up</strong></span>
-                            <span *ngIf="!flag">Already have an account? <strong (click)="routerLogin()"
-                                    routerLink="login" type="button" id="login">login</strong></span>
-
-                        </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="d-lg-flex">
-    <div class="bg order-1 order-md-2"
-        style="background-image: url('../../assets/javier-martinez-4WjOwfIIQ-E-unsplash.jpg');"></div>
-    <div class="contents order-2 order-md-1">
-        <div class="container" *ngIf="signUpClicked">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-md-8">
-                    <h3>Sign Up to <strong>BookShelf</strong></h3>
-                    <p class="mb-6"><i>Register yourself and experience the serenity of the books and their words.</i>
-                    </p>
-                    <br>
-                    <form action="#" method="post">
                         <div class="form-group first">
                             <label for="username">Username</label>
-                            <input type="text" class="form-control" placeholder="Your Username" id="username">
+                            <input type="text" class="form-control" placeholder="Your Username" id="username"
+                                name="username" [(ngModel)]="username">
                         </div>
+                        <!-- {{username}}
+                        {{firstPassword}}
+                        {{secondPassword}} -->
                         <div class="form-group last mb-3">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" placeholder="Your Password" id="password">
+                            <input type="password" class="form-control" placeholder="Your Password" id="password1"
+                                name="firstPassword" [(ngModel)]="firstPassword">
+                        </div>
+                        <div class="form-group last mb-3" *ngIf="!flag">
+                            <label for="password">Re-enter Password</label>
+                            <input type="password" class="form-control" placeholder="Your Password" id="password2"
+                                name="secondPassword" [(ngModel)]="secondPassword">
                         </div>
 
-                        <button type="submit" class="login-btn">Sign Up</button>
+                        <p style="color:red" *ngIf="firstPassword!=secondPassword && !flag">password not matching</p>
+
+                        <!-- <button type="submit" class="login-btn">{{flag?"Login":"Sign Up"}}</button>
                         <br>
                         <br>
                         <hr>
-                        <span>Alraedy have an account? <strong type="button" id="sign-up"
-                                (click)="onSignUp()">Login</strong></span>
+                        <span *ngIf="flag">Don't have an account? <strong (click)="routerSignUp()" routerLink="signup"
+                                type="button" id="sign-up">Sign
+                                Up</strong></span>
+                        <span *ngIf="!flag">Already have an account? <strong (click)="routerLogin()" routerLink="login"
+                                type="button" id="login">login</strong></span> -->
+
+                        <button type="submit" class="login-btn">{{flag?"Login":"Sign Up"}}</button>
+                        <br>
+                        <br>
+                        <hr style="margin-bottom:10px">
+                        <span *ngIf="flag">Don't have an account? <strong (click)="routerSignUp()" routerLink="signup"
+                                type="button" id="sign-up">Sign Up</strong></span>
+                        <span *ngIf="!flag">Already have an account? <strong (click)="routerLogin()" routerLink="login"
+                                type="button" id="login">login</strong></span>
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<div class="outer-div">
-    <h1><span>Log in to your account</span>
-    </h1>
-
-    <div id="main-div">
-        <br>
-        <form #data="ngForm" (ngSubmit)="data.resetForm()">
-            <div class="form-group">
-                <label for="name">Username</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="">
-            </div>
-            <div class="form-group">
-                <label for="email">Password</label>
-                <input type="password" class="form-control" id="email" name="email" placeholder="">
-            </div>
-            <button class="btn btn-primary">Login</button>
-            <hr>
-            <button id="signUp-btn">No account? Sign Up</button>
-        </form>
-    </div>
-</div>
-
-
-<a href="https://front.codes/" class="logo" target="_blank">
-    <img src="https://assets.codepen.io/1462889/fcy.png" alt="">
-</a>
-
-<div class="section">
-    <div class="container">
-        <div class="row full-height justify-content-center">
-            <div class="col-12 text-center align-self-center py-5">
-                <div class="section pb-5 pt-5 pt-sm-2 text-center">
-                    <h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
-                    <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
-                    <label for="reg-log"></label>
-                    <div class="card-3d-wrap mx-auto">
-                        <div class="card-3d-wrapper">
-                            <div class="card-front">
-                                <div class="center-wrap">
-                                    <div class="section text-center">
-                                        <h4 class="mb-4 pb-3">Log In</h4>
-                                        <div class="form-group">
-                                            <input type="email" name="logemail" class="form-style"
-                                                placeholder="Your Email" id="logemail" autocomplete="off">
-                                            <i class="input-icon uil uil-at"></i>
-                                        </div>
-                                        <div class="form-group mt-2">
-                                            <input type="password" name="logpass" class="form-style"
-                                                placeholder="Your Password" id="logpass" autocomplete="off">
-                                            <i class="input-icon uil uil-lock-alt"></i>
-                                        </div>
-                                        <a href="#" class="btn mt-4">submit</a>
-                                        <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your
-                                                password?</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <div class="center-wrap">
-                                    <div class="section text-center">
-                                        <h4 class="mb-4 pb-3">Sign Up</h4>
-                                        <div class="form-group">
-                                            <input type="text" name="logname" class="form-style"
-                                                placeholder="Your Full Name" id="logname" autocomplete="off">
-                                            <i class="input-icon uil uil-user"></i>
-                                        </div>
-                                        <div class="form-group mt-2">
-                                            <input type="email" name="logemail" class="form-style"
-                                                placeholder="Your Email" id="logemail" autocomplete="off">
-                                            <i class="input-icon uil uil-at"></i>
-                                        </div>
-                                        <div class="form-group mt-2">
-                                            <input type="password" name="logpass" class="form-style"
-                                                placeholder="Your Password" id="logpass" autocomplete="off">
-                                            <i class="input-icon uil uil-lock-alt"></i>
-                                        </div>
-                                        <a href="#" class="btn mt-4">submit</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->

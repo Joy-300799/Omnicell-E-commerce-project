@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { BookStock } from './add-new-book/add-new-book.component';
 
 @Injectable({
   providedIn: 'root',
@@ -15,10 +16,15 @@ export class AppServiceService {
   constructor(private http: HttpClient) { }
 
   getAllBooks() {
-    return this.http.get(this.url + "/getAllBooks");
+    // return this.http.get(this.url + "/getAllBooks");
+    return this.http.get(this.url + "/getAllBookStock");
   }
 
-  addBook(book: any) {
-    return this.http.post(this.url + "/addBook", book);
+  addBook(bookStock: BookStock) {
+    return this.http.post(this.url + "/addBookStock", bookStock);
+  }
+
+  getBook(bookName: string) {
+    return this.http.get(this.url + "/getBookStock?bookName=" + bookName);
   }
 }

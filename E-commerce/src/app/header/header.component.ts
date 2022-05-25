@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  searchWord: string = "";
+
   loginBtnClicked: boolean = true;
-  constructor() { }
+  constructor(private searchService: SearchService) { }
 
   ngOnInit(): void {
+  }
+
+  search() {
+    console.log(this.searchWord);
+    this.searchService.search(this.searchWord);
   }
 
 }

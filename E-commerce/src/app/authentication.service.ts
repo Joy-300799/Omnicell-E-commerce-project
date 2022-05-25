@@ -11,7 +11,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   login(credential: any) {
-    console.log(credential);
+    // console.log(credential);
     return this.http.post(this.baseUrl + "/login", credential);
   }
 

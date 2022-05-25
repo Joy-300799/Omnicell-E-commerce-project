@@ -1,35 +1,30 @@
 <div>
     <div class="book-image">
-        <img src="../../assets/the-two-towers.jpg" alt="">
+        <img src={{book.book.bookImgSrc}} alt="">
     </div>
-    <div class="availability">
+    <div class="availability" *ngIf="book.quantity<=0">
         <p>Out of stock</p>
     </div>
 
     <div class="book-details">
-        <h1><b>The Two Towers</b></h1>
-        <h3>- Chetan Bhagat</h3>
+        <h1><b>{{book.book.bookName}}</b></h1>
+        <h3>- {{book.book.authorName}}</h3>
         <br>
-        
-        <p style="margin-bottom:20px">price: $ 7.00</p>
+
+        <p style="margin-bottom:20px">price: {{book.book.price|currency:"INR"}}</p>
         <hr>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus veritatis, eius molestiae molestias ducimus
-            ipsum in labore consequatur, officiis cum iste a adipisci. Quo, fuga ipsam magni repellendus molestiae
-            atque.
-            <br>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat id ut laboriosam repellendus illum beatae
-            fugit iste. In voluptates eos officia, accusamus nam ipsum consequuntur soluta qui laboriosam voluptas
-            facilis.
+        <p>{{book.book.description}}
         </p>
         <hr>
 
-        <p style="margin-top:20px">150 pages</p>
+        <p style="margin-top:20px">Pages: {{book.book.pages}}</p>
         <br>
-        <p>language: English</p>
+        <p>language: {{book.book.language}}</p>
         <br>
-<button class="cart-btn"> ADD TO CART
-</button>
+        <button [disabled]="book.quantity==0" style="cursor:not-allowed;" (click)="addToCart()" class="cart-btn"> ADD TO
+            CART
+        </button>
 
-       
+
     </div>
 </div>

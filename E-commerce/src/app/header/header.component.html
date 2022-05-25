@@ -29,22 +29,23 @@
 
 <header>
 
-<div class="navbar2">
-  <div><img src="../../assets/public (1)-PhotoRoom.png" alt="" class="logo" routerLink=""></div>
-  <div class="header2">
-    <ul class="menu2">
-      <form class="nosubmit">
-        <input class="nosubmit" type="search" placeholder="Search for books.">
-      </form>
-      <li>Home</li>
-      <li>About</li>
-      <li>Category</li>
-      <li class="nav" routerLink="/admin">Admin</li>
-      <li class="login" routerLink="/login" [state]="{flag: true}">Login</li>
-      <img src="../../assets/cart.png" alt="" routerLink="/cart" class="cart">
-    </ul>
+  <div class="navbar2">
+    <div><img src="../../assets/public (1)-PhotoRoom.png" alt="" class="logo" routerLink=""></div>
+    <div class="header2">
+      <ul class="menu2">
+        <form class="nosubmit">
+          <input class="nosubmit" name="searchWord" type="search" placeholder="Search for books."
+            [(ngModel)]="searchWord" (keyup)="search()">
+        </form>
+        <li>Home</li>
+        <li>About</li>
+        <li>Category</li>
+        <li class="nav" routerLink="/admin">Admin</li>
+        <li class="login" routerLink="/login" [state]="{flag: true}">Login</li>
+        <img src="../../assets/cart.png" alt="" routerLink="/cart" class="cart">
+      </ul>
+    </div>
   </div>
-</div>
 
 </header>
 

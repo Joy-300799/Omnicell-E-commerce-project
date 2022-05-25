@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppServiceService } from '../app-service.service';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'app-home',
@@ -9,26 +10,61 @@ import { AppServiceService } from '../app-service.service';
 })
 export class HomeComponent implements OnInit {
   bookList: any;
+  searchList: any;
+  latestReleases: Array<any> = [];
+  mostRecommended: Array<any> = [];
 
-  constructor(private service: AppServiceService, private router: Router) { }
+  constructor(private service: AppServiceService, private router: Router, private searchService: SearchService) { }
 
   ngOnInit(): void {
     this.service.getAllBooks().subscribe({
       next: (data) => {
         this.bookList = data;
-        console.log(data);
+        this.searchList = data;
+        // console.log(data);
+        for (let i = 0; i < 6; i++) {
+          this.latestReleases.push(this.bookList[i]);
+        };
+        for (let i = 6; i < 12; i++) {
+          this.mostRecommended.push(this.bookList[i]);
+        }
       },
       error: (error) => {
         console.log(error);
       },
       complete: () => {
-        console.log("completed");
+        // console.log("completed");
       }
+    })
+    this.searchService.currentword.subscribe({
+      next: (data: string) => {
+        this.searchList = [...this.bookList];
+        console.log("booklist");
+        console.log(this.bookList);
+        if (data) {
+          for (let i = 0; i < this.searchList.length; i++) {
+            if (!this.searchList[i].book.bookName.toLowerCase().includes(data.toLowerCase())) {
+              console.log(this.searchList[i].book.bookName);
+              console.log(this.searchList[i].book.bookName.toLowerCase().includes(data.toLowerCase()));
+              console.log(data.toLowerCase());
+              this.searchList.splice(i, 1);
+            } else {
+              // console.log(this.searchList[i]);
+            }
+          }
+        }
+        console.log(this.searchList);
+      },
+      error: (error) => console.log(error),
     })
   }
 
   goToBookForm() {
     this.router.navigateByUrl("bookForm");
+  }
+
+  goToBookDetailPage(bookName: string) {
+    this.router.navigate(["bookDescription", { "bookName": bookName }])
   }
 
 }

@@ -43,17 +43,18 @@
 
 .books-container-latest {
     display: flex;
-    justify-content: space-between;
     /* border: 1px solid #333; */
     height: 40%;
+    width:100vw;
+    overflow-y :auto;
+    white-space: no-wrap;
 }
 
 .book-img-latest {
     height: 100%;
-    width: 75%;
-    border-radius: 10px;
-    margin-left: 45px;
-    backface-visibility: hidden;
+    width: 15vw;
+    margin:0% 10vw;
+    padding:10px;
 }
 
 
@@ -65,13 +66,9 @@
     transform: scale(1.1);
 }
 
-.book-image-latest:hover > .text{
-    color:white;
-}
-
 .img-div-latest {
     /* border:1px solid #999; */
-    width: 27%;
+    width: 30%;
 }
 
 /* .img-div-latest figure img {
