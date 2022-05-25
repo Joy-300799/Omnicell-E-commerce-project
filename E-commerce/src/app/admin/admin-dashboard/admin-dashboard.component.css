@@ -1,0 +1,174 @@
+/* body {
+    margin: 0;
+    padding: 0;
+    font-family: 'montserrat';
+    background: #e3e9f7;
+} */
+
+.logo {
+    padding: 20px;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 260px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(16, 148, 160);
+}
+
+nav ul li {
+    list-style: none;
+}
+
+
+nav ul li a {
+    display: block;
+    font-family: 'montserrat';
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 17px;
+    color: #fff;
+    position: relative;
+    padding: 20px 0px 15px 25px;
+    transition: all 0.5s;
+}
+
+nav ul li a:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background: #e3e9f7;
+    border-radius: 40px 0 0 40px;
+    z-index: -1;
+    transition: all 1s;
+}
+
+nav ul li a:hover {
+    color: #2b2626;
+    font-size: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+nav ul li a:hover:before {
+    width: 95%;
+}
+
+
+.wrapper {
+    margin-left: 260px;
+}
+
+.section {
+    left: 42%;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    position: absolute;
+    text-align: center;
+    top: 2%;
+}
+
+.box-area h2 {
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+.action-logo {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    margin-top: 2px;
+}
+
+.add-book-btn{
+    padding:10px;
+    Background-color: green;
+    color:white;
+    border-radius: 10px;
+    width:200px;
+    letter-spacing: 2px;
+}
+
+.section form{
+    /* border:1px solid #333; */
+    padding:20px;
+    box-shadow: 0 0 10px #999;
+}
+
+.single-book-modal{
+    top: 13%;
+    /* border: 2px solid #444; */
+    display: flex;
+    height: 200px;
+    position: absolute;
+    left: 20%;
+    padding:20px;
+    width:70%;
+    margin-bottom:30px;
+}
+
+.single-book-modal:hover{
+box-shadow: 0 0 10px rgb(128, 128, 128);
+transition:0.3s ease;
+}
+
+.single-book-modal img{
+    margin-left:50px;
+}
+
+.single-book-details{
+
+    margin-left:50px;
+    width:70%;
+}
+
+.availability{
+    position: absolute;
+    top: 73%;
+    left: 72%;
+    border: 2px solid grey;
+    padding: 1px;
+    background-color: #f00202;
+    color: white;
+}
+
+#edit{
+    top: 19%;
+    position: absolute;
+    right: 4%;
+    height: 30px;
+    width: 30px;
+}
+
+#delete{
+    position: absolute;
+    top: 59%;
+    right: 3.8%;
+    height: 36px;
+}
+
+h1{
+    font-size: 25px;
+    font-family: Roboto;
+    font-weight:bold;
+}
+
+h3{
+font-family:'sans-serif', cursive;
+font-size:17px;
+}
+
+.single-book-details{
+    text-align: Justify;
+}
+
+.add-book-btn:active {
+    transform: scale(0.98);
+    box-shadow: 3px 2px 22px 1px rgba(3, 3, 3, 0.24);
+  }

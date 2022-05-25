@@ -1,1 +1,172 @@
-<p>admin-dashboard works!</p>
+<nav>
+    <ul>
+        <!-- <li class="logo"><img src="../../../assets/public (1)-PhotoRoom.png"></li> -->
+        <br>
+        <br>
+        <br>
+        <li (click)="toggleAddBook()"><a><span><img src="../../../assets/plus.png" alt="" class="action-logo">&nbsp;
+                    &nbsp; &nbsp; &nbsp;Add New
+                    Book</span></a></li>
+        <li (click)="toggleViewBooks()"><a><span><img src="../../../assets/books-stack-of-three.png" alt=""
+                        class="action-logo">&nbsp; &nbsp; &nbsp;
+                    &nbsp; Books List</span></a></li>
+        <li (click)="toggleFav()"><a><span><img src="../../../assets/heart.png" alt="" class="action-logo">&nbsp; &nbsp;
+                    &nbsp; &nbsp;
+                    Favourites</span></a></li>
+
+        <li style="margin-top:140%;" routerLink="/admin"><a><span><img src="../../../assets/log-out.png" alt=""
+                        class="action-logo">&nbsp;
+                    &nbsp; &nbsp; &nbsp; Sign
+                    Out</span></a></li>
+    </ul>
+</nav>
+
+<!--Add new book-->
+<div class="wrapper" *ngIf="addBookClicked">
+    <div class="section">
+        <form #adminAddBooks="ngForm" (ngSubmit)="adminAddBooks.resetForm()">
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="form-outline mb-4">
+                <input type="text" id="form6Example5" class="form-control" placeholder="Book Name" required />
+                <!-- <label class="form-label" for="form6Example5">Number of pages</label> -->
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="text" id="form6Example5" class="form-control" placeholder="Author Name" required />
+                <!-- <label class="form-label" for="form6Example5">Number of pages</label> -->
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="text" id="form6Example5" class="form-control" placeholder="Genre" required />
+                <!-- <label class="form-label" for="form6Example5">Number of pages</label> -->
+            </div>
+
+            <!-- Text input -->
+            <div class="form-outline mb-4">
+                <textarea class="form-control" id="form6Example7" rows="4" placeholder="Description"
+                    required></textarea>
+
+                <!-- <label class="form-label" for="form6Example3">Company name</label> -->
+            </div>
+
+
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-outline">
+                        <input type="number" id="form6Example1" class="form-control" placeholder="price" required/>
+                        <!-- <label class="form-label" for="form6Example1">Book Name</label> -->
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-outline">
+                        <input type="number" id="form6Example2" class="form-control" placeholder="quantity" required/>
+                        <!-- <label class="form-label" for="form6Example2">Author Name</label> -->
+                    </div>
+                </div>
+            </div>
+            <!-- page number input -->
+
+            <div class="form-outline mb-4">
+                <input type="number" id="form6Example5" class="form-control" placeholder="Number of pages" required/>
+                <!-- <label class="form-label" for="form6Example5">Number of pages</label> -->
+            </div>
+
+            <!-- language input -->
+            <div class="form-outline mb-4">
+                <input type="number" id="form6Example6" class="form-control" placeholder="Language" required/>
+                <!-- <label class="form-label" for="form6Example6">Price</label> -->
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="text" id="form6Example6" class="form-control" placeholder="Cover picture link" required/>
+                <!-- <label class="form-label" for="form6Example6">Price</label> -->
+            </div>
+
+            <!-- add button -->
+            <button type="submit" class="add-book-btn">Add Book</button>
+        </form>
+
+    </div>
+</div>
+
+
+<!--view All book-->
+<div class="wrapper" *ngIf="viewAllBooksClicked">
+    <div class="section-viewAllBooks" style="display:flex;flex-direction:column;">
+        <div class="single-book-modal">
+            <img src="../../../assets/zero-to-one.jpg" alt="">
+            <div class="single-book-details">
+                <h1>Zero To One</h1>
+                <h3>-Chetan Bhagat</h3>
+                <hr>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum officiis minima, ducimus
+                    aperiam, itaque eveniet rem, porro dolorem voluptatibus excepturi eos dignissimos. Aut nam
+                    dignissimos doloremque ducimus, earum reiciendis!</p>
+                <p>language: English</p>
+                <div class="availability">
+                    <p>Out of stock</p>
+                </div>
+                <img src="../../../assets/pencil.png" alt="" id="edit">
+                <img src="../../../assets/bin.png" alt="" id="delete">
+            </div>
+            <div>
+
+            </div>
+        </div>
+
+
+        <!-- <div class="single-book-modal">
+            <img src="../../../assets/the-two-towers.jpg" alt="">
+            <div class="single-book-details">
+                <h1>The Two Towers</h1>
+                <h3>-Michael dowris</h3>
+                <hr>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum officiis minima, ducimus
+                    aperiam, itaque eveniet rem, porro dolorem voluptatibus excepturi eos dignissimos. Aut nam
+                    dignissimos doloremque ducimus, earum reiciendis!</p>
+                <p>language: English</p>
+                <div class="availability">
+                    <p>In stock</p>
+                </div>
+                <img src="../../../assets/pencil.png" alt="" id="edit">
+                <img src="../../../assets/bin.png" alt="" id="delete">
+            </div>
+            <div> 
+
+            </div>
+        </div> -->
+
+    </div>
+</div>
+
+
+<!--fav All book-->
+<div class="wrapper" *ngIf="favClicked">
+    <div class="section">
+        <form>
+            <!-- Text input -->
+            <div class="form-outline mb-4">
+                <textarea class="form-control" id="form6Example7" rows="4" placeholder="Description"></textarea>
+
+                <!-- <label class="form-label" for="form6Example3">Company name</label> -->
+            </div>
+
+            <!-- page number input -->
+
+            <div class="form-outline mb-4">
+                <input type="number" id="form6Example5" class="form-control" placeholder="Number of pages" />
+                <!-- <label class="form-label" for="form6Example5">Number of pages</label> -->
+            </div>
+
+            <!-- language input -->
+            <div class="form-outline mb-4">
+                <input type="number" id="form6Example6" class="form-control" placeholder="Language" />
+                <!-- <label class="form-label" for="form6Example6">Price</label> -->
+            </div>
+
+            <!-- add button -->
+            <button type="submit" class="add-book-btn">Add Book</button>
+        </form>
+
+    </div>
+</div>

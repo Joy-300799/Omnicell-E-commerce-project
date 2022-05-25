@@ -18,7 +18,7 @@
                             <input type="text" class="form-control" placeholder="Your Username" id="username"
                                 name="username" [(ngModel)]="username">
                         </div>
-                        <!-- {{username}}
+                        {{username}}
                         {{firstPassword}}
                         {{secondPassword}} -->
                         <div class="form-group last mb-3">
@@ -32,9 +32,8 @@
                                 name="secondPassword" [(ngModel)]="secondPassword">
                         </div>
 
-                        <p style="color:red" *ngIf="firstPassword!=secondPassword && !flag">password not matching</p>
-
-                        <!-- <button type="submit" class="login-btn">{{flag?"Login":"Sign Up"}}</button>
+                        <p style="color:red" *ngIf="firstPassword!=secondPassword">password not matching</p>
+                        <button type="submit" class="login-btn">{{flag?"Login":"Sign Up"}}</button>
                         <br>
                         <br>
                         <hr>
