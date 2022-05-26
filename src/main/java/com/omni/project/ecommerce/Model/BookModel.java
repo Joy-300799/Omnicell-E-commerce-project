@@ -15,8 +15,7 @@ public class BookModel {
 	private String bookName;
 	private String authorName;
 	private String description;
-	private List<String> genres;
-	private int quantity;
+	private String genre;
 	private double price;
 	private String bookImgSrc;
 	private String language;
@@ -27,8 +26,7 @@ public class BookModel {
 					String authorName,
 					String description,
 					double price,
-					int quantity,
-					List<String> genres,
+					String genre,
 					String bookImgSrc,
 					String language,
 					int pages) {
@@ -37,8 +35,7 @@ public class BookModel {
 		this.authorName = authorName;
 		this.description = description;
 		this.price = price;
-		this.quantity = quantity;
-		this.genres = genres;
+		this.genre = genre;
 		this.bookImgSrc = bookImgSrc;
 		this.language = language;
 		this.pages = pages;
@@ -66,18 +63,6 @@ public class BookModel {
 
 	public void setPages(int pages) {
 		this.pages = pages;
-	}
-
-
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
-
-
-	public void addBookQuantity(int qty) {
-		this.quantity+=qty;
 	}
 
 	public ObjectId getId() {
@@ -112,10 +97,6 @@ public class BookModel {
 		this.description = description;
 	}
 
-	public int getQuantity() {
-		return quantity;
-	}
-
 	public double getPrice() {
 		return price;
 	}
@@ -124,12 +105,12 @@ public class BookModel {
 		this.price = price;
 	}
 
-	public List<String> getGenres() {
-		return genres;
+	public String getGenre() {
+		return genre;
 	}
 
-	public void setGenres(List<String> genres) {
-		this.genres = genres;
+	public void setGenre(String genre) {
+		this.genre = genre;
 	}
 
 	public String getBookImgSrc() {

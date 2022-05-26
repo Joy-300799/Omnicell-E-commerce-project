@@ -9,17 +9,17 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.omni.project.ecommerce.Model.UserModel;
+import com.omni.project.ecommerce.Model.UserPassModel;
 
 @Service
 public class BookUserDetailService implements UserDetailsService {
 	
 	@Autowired
-	UserService service;
+	AuthenticationService service;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserModel user = service.getUserByUsername(username);
+		UserPassModel user = service.getUserByUsername(username).get();
 		
 		return new User(user.getUsername(),user.getPassword(),null);
 	}

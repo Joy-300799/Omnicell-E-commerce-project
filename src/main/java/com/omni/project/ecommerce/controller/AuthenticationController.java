@@ -14,12 +14,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.omni.project.ecommerce.Model.AuthenticationRequest;
-import com.omni.project.ecommerce.Model.UserModel;
+import com.omni.project.ecommerce.Model.UserAllDetails;
+import com.omni.project.ecommerce.Model.UserCompleteDetailRequestBody;
+import com.omni.project.ecommerce.Model.UserPassModel;
+import com.omni.project.ecommerce.bookServices.AuthenticationService;
 import com.omni.project.ecommerce.bookServices.UserService;
 
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
 public class AuthenticationController {
+	
+	@Autowired
+	AuthenticationService authService;
 	
 	@Autowired
 	UserService userService;
@@ -31,28 +37,31 @@ public class AuthenticationController {
 	private AuthenticationManager authenticationManager;
 	
 	@PostMapping("/signup")
-	public String addUser(@RequestBody AuthenticationRequest newUser) {
-		userService.addUser(newUser.getUsername(),
+	public ResponseEntity<?> addUser(@RequestBody UserCompleteDetailRequestBody newUser) {
+		authService.addUser(newUser.getUsername(),
 				passwordEncoder.encode(newUser.getPassword()));
-		return "registered success";
+		userService.addUserAllDetails(new UserAllDetails(newUser.getUsername(),
+											newUser.getPhoneNumber(),newUser.getEmail()));
+		return ResponseEntity.ok(newUser);
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<String> checkUser(@RequestBody AuthenticationRequest newUser) {
+	public ResponseEntity<?> checkUser(@RequestBody AuthenticationRequest newUser) {
 		String username = newUser.getUsername();
 		String password = newUser.getPassword();
 //		authenticationManager
 //		.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 //		return "authentication success";
-		if (userService.login(username, password)) {
-			return new ResponseEntity("authentication success", HttpStatus.OK);
+		if (authService.login(username, password)) {
+//			return new ResponseEntity("authentication success", HttpStatus.OK);
+			return ResponseEntity.ok(new ResponseEntity("authentication success", HttpStatus.OK));
 		}
 		return new ResponseEntity("Unauthorized", HttpStatus.UNAUTHORIZED); 
 	}
 	
 	@GetMapping("/all")
-	public List<UserModel> getAllContact(){
-		return this.userService.getAllUser();
+	public List<UserPassModel> getAllContact(){
+		return this.authService.getAllUser();
 	}
 	
 }

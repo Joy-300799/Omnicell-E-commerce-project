@@ -1,19 +1,23 @@
 package com.omni.project.ecommerce.repository;
 
+import java.util.Optional;
+
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.omni.project.ecommerce.Model.UserModel;
+import com.omni.project.ecommerce.Model.UserPassModel;
 
 @Repository
-public interface UserRepository extends MongoRepository<UserModel, ObjectId> {
+public interface UserPassRepository extends MongoRepository<UserPassModel, String> {
+	
 	@Query("{username:?0}")
-	UserModel findByUsername(String username);
+	Optional<UserPassModel> findById(String username);
 	
 	@Query("{username:?0, password:?1}")
-	UserModel findByUsernameAndPassword(String username, String password);
+	UserPassModel findByUsernameAndPassword(String username, String password);
+	
 }
 
 
