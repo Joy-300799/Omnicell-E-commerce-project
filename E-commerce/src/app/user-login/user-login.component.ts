@@ -17,6 +17,7 @@ export class UserLoginComponent implements OnInit {
   username: any;
   firstPassword: any;
   secondPassword: any;
+  
   loggedIn: boolean = false;
 
   ngOnInit(): void {

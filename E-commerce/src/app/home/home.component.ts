@@ -14,13 +14,13 @@ export class HomeComponent implements OnInit {
   latestReleases: Array<any> = [];
   mostRecommended: Array<any> = [];
 
-  searchedWord : string = "";
+  searchedWord: string = "";
 
   constructor(private service: AppServiceService, private router: Router, private searchService: SearchService) { }
 
   ngOnInit(): void {
     this.service.getAllBooks().subscribe({
-      next: (data) => {
+      next: (data: any) => {
         this.bookList = data;
         this.searchList = data;
         // console.log(data);
