@@ -1,0 +1,16 @@
+<div *ngFor="let genre of genres,index as i">
+    <div>
+        <button (click)="getBook(genre)">{{genre}}</button>
+    </div>
+</div>
+
+<br><br>
+
+<div *ngFor="let book of genreBookList,index as i">
+    <br>
+    <div (click)="goToBookDetail(book.book.bookName)">
+        <img src={{book.book.bookImgSrc}} alt="">
+        <p>{{book.book.bookName}}</p>
+    </div>
+
+</div>

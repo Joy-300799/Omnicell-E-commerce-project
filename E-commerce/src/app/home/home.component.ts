@@ -6,25 +6,31 @@ import { SearchService } from '../search.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  bookList: any;
-  searchList: any;
+  bookList: any = [];
+  searchList: any = [];
   latestReleases: Array<any> = [];
   mostRecommended: Array<any> = [];
 
-  constructor(private service: AppServiceService, private router: Router, private searchService: SearchService) { }
+  searchedWord: string = '';
+
+  constructor(
+    private service: AppServiceService,
+    private router: Router,
+    private searchService: SearchService
+  ) {}
 
   ngOnInit(): void {
     this.service.getAllBooks().subscribe({
-      next: (data) => {
+      next: (data: any) => {
         this.bookList = data;
         this.searchList = data;
         // console.log(data);
         for (let i = 0; i < 6; i++) {
           this.latestReleases.push(this.bookList[i]);
-        };
+        }
         for (let i = 6; i < 12; i++) {
           this.mostRecommended.push(this.bookList[i]);
         }
@@ -34,37 +40,27 @@ export class HomeComponent implements OnInit {
       },
       complete: () => {
         // console.log("completed");
-      }
-    })
+      },
+    });
+
     this.searchService.currentword.subscribe({
       next: (data: string) => {
-        this.searchList = [...this.bookList];
-        console.log("booklist");
-        console.log(this.bookList);
-        if (data) {
-          for (let i = 0; i < this.searchList.length; i++) {
-            if (!this.searchList[i].book.bookName.toLowerCase().includes(data.toLowerCase())) {
-              console.log(this.searchList[i].book.bookName);
-              console.log(this.searchList[i].book.bookName.toLowerCase().includes(data.toLowerCase()));
-              console.log(data.toLowerCase());
-              this.searchList.splice(i, 1);
-            } else {
-              // console.log(this.searchList[i]);
-            }
-          }
-        }
-        console.log(this.searchList);
+        this.searchedWord = data;
+        this.searchList = this.bookList.filter((book: any) => {
+          return book.book.bookName
+            .toLocaleLowerCase()
+            .includes(data.toLowerCase());
+        });
       },
       error: (error) => console.log(error),
-    })
+    });
   }
 
   goToBookForm() {
-    this.router.navigateByUrl("bookForm");
+    this.router.navigateByUrl('bookForm');
   }
 
   goToBookDetailPage(bookName: string) {
-    this.router.navigate(["bookDescription", { "bookName": bookName }])
+    this.router.navigate(['bookDescription', { bookName: bookName }]);
   }
-
 }

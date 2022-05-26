@@ -8,6 +8,7 @@ import { AdminComponent } from './admin/admin.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { CartComponent } from './cart/cart.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { CategoryComponent } from './category/category.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,11 +19,12 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'signup', component: UserLoginComponent },
   { path: 'adminDashboard', component: AdminDashboardComponent },
-  
+  { path: 'category', component: CategoryComponent },
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

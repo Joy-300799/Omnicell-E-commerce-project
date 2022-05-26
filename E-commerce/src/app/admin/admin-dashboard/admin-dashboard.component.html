@@ -72,7 +72,7 @@
 
             <!-- language input -->
             <div class="form-outline mb-4">
-                <input type="number" id="form6Example6" formControlName="language" class="form-control"
+                <input type="text" id="form6Example6" formControlName="language" class="form-control"
                     placeholder="Language" required />
 
             </div>
@@ -94,21 +94,21 @@
 <!--view All book-->
 <div class="wrapper" *ngIf="viewAllBooksClicked">
     <div class="section-viewAllBooks" style="display:flex;flex-direction:column;">
-        <div class="single-book-modal">
-            <img src="../../../assets/zero-to-one.jpg" alt="">
-            <div class="single-book-details">
-                <h1>Zero To One</h1>
-                <h3>-Chetan Bhagat</h3>
+        <div style="margin-top:100px;"></div>
+
+        <div class="single-book-modal" *ngFor="let item of bookList,index as i">
+            <img src={{item.book.bookImgSrc}} alt="" style="height:170px; width:120px">
+            <div class="single-book-details" >
+                <h1>{{item.book.bookName}}</h1>
+                <h3>-{{item.book.authorName}}</h3>
                 <hr>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum officiis minima, ducimus
-                    aperiam, itaque eveniet rem, porro dolorem voluptatibus excepturi eos dignissimos. Aut nam
-                    dignissimos doloremque ducimus, earum reiciendis!</p>
-                <p>language: English</p>
+                <p>language: {{item.book.language}}</p>
+                <p>price: {{item.book.price|currency:"INR"}}</p>
                 <div class="availability">
                     <p>Out of stock</p>
                 </div>
-                <img src="../../../assets/pencil.png" alt="" id="edit">
-                <img src="../../../assets/bin.png" alt="" id="delete">
+                <img src="../../../assets/pencil.png" alt="" id="edit" (click)="editBook()">
+                <img src="../../../assets/bin.png" alt="" id="delete" (click)="deleteBook(item.book.bookName,i)">
             </div>
             <div>
 

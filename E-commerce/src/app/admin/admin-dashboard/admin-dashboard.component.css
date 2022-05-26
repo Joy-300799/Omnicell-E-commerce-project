@@ -106,11 +106,19 @@ nav ul li a:hover:before {
     /* border: 2px solid #444; */
     display: flex;
     height: 200px;
+<<<<<<< HEAD
     position: absolute;
     left: 20%;
     padding: 20px;
     width: 70%;
     margin-bottom: 30px;
+=======
+    position: relative;
+    left: 10%;
+    padding:20px;
+    width:70%;
+    margin-bottom:30px;
+>>>>>>> 521904762544a3a2b56e02c545321e63e8bdfccd
 }
 
 .single-book-modal:hover {
@@ -118,6 +126,7 @@ nav ul li a:hover:before {
     transition: 0.3s ease;
 }
 
+<<<<<<< HEAD
 .single-book-modal img {
     margin-left: 50px;
 }
@@ -126,20 +135,34 @@ nav ul li a:hover:before {
 
     margin-left: 50px;
     width: 70%;
+=======
+.single-book-modal img{
+    margin-left:10px;
+}
+
+.single-book-details{
+    margin-left:50px;
+    width:80%;
+>>>>>>> 521904762544a3a2b56e02c545321e63e8bdfccd
 }
 
 .availability {
     position: absolute;
     top: 73%;
     left: 72%;
-    border: 2px solid grey;
+    border: none;
     padding: 1px;
     background-color: #f00202;
     color: white;
 }
 
+<<<<<<< HEAD
 #edit {
     top: 19%;
+=======
+#edit{
+    top: 16%;
+>>>>>>> 521904762544a3a2b56e02c545321e63e8bdfccd
     position: absolute;
     right: 4%;
     height: 30px;
@@ -153,8 +176,13 @@ nav ul li a:hover:before {
     height: 36px;
 }
 
+<<<<<<< HEAD
 h1 {
     font-size: 25px;
+=======
+h1{
+    font-size: 22px;
+>>>>>>> 521904762544a3a2b56e02c545321e63e8bdfccd
     font-family: Roboto;
     font-weight: bold;
 }

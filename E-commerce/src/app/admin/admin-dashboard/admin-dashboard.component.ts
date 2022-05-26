@@ -13,9 +13,16 @@ export class AdminDashboardComponent implements OnInit {
   favClicked: boolean = false;
   signOutClicked: boolean = false;
 
-  constructor(private service: AppServiceService) {}
+  bookList: any;
 
-  ngOnInit(): void {}
+  constructor(private service: AppServiceService) { }
+
+  ngOnInit(): void {
+    this.service.getAllBooks().subscribe({
+      next: (data) => this.bookList = data,
+      error: (error) => console.log(error)
+    })
+  }
 
   toggleAddBook() {
     this.addBookClicked = true;
@@ -46,6 +53,25 @@ export class AdminDashboardComponent implements OnInit {
     price: new FormControl(),
     bookImgSrc: new FormControl(),
   });
+
+  editBook() {
+
+  }
+
+  deleteBook(bookName: string, index: number) {
+    this.service.deleteBook(bookName).subscribe({
+      next: (data) => {
+        // this.bookList=this.bookList.splice(index, 1),
+          // console.log(data)
+        // this.service.getAllBooks().subscribe({
+        //   next:(data)=>{this.bookList=data}
+        // })
+      },
+      error: (error) => console.log(error)
+    });
+    this.bookList.splice(index, 1);
+
+  }
 
   onSubmit() {
     console.log(this.newBookForm.value);
