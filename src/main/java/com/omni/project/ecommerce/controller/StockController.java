@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.omni.project.ecommerce.Model.BookStock;
 import com.omni.project.ecommerce.bookServices.StockService;
-
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
 public class StockController {
@@ -75,7 +74,8 @@ public class StockController {
 		try {
 			this.stockService.deleteBook(name);
 //			return new ResponseEntity<>("deleted successfully", HttpStatus.OK);
-			return ResponseEntity.ok("deleted successfully");
+//			return ResponseEntity.ok("deleted successfully");
+			return new ResponseEntity<>("authentication success", HttpStatus.OK);
 		}catch(Exception e) {
 			throw new Exception(e);
 		}

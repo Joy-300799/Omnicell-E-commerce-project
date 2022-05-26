@@ -11,7 +11,7 @@ public class BookModel {
 
 	@Id
 	private ObjectId id;
-	
+
 	private String bookName;
 	private String authorName;
 	private String description;
@@ -20,6 +20,7 @@ public class BookModel {
 	private String bookImgSrc;
 	private String language;
 	private int pages;
+<<<<<<< HEAD
 	
 	
 	public BookModel(String bookName,
@@ -30,6 +31,11 @@ public class BookModel {
 					String bookImgSrc,
 					String language,
 					int pages) {
+=======
+
+	public BookModel(String bookName, String authorName, String description, double price, String genre,
+			String bookImgSrc, String language, int pages) {
+>>>>>>> 89f7c4be1217a2686122967bcb1ba2b751f38497
 		this.id = new ObjectId();
 		this.bookName = bookName;
 		this.authorName = authorName;
@@ -40,26 +46,18 @@ public class BookModel {
 		this.language = language;
 		this.pages = pages;
 	}
-	
-	
-	
+
 	public String getLanguage() {
 		return language;
 	}
-
-
 
 	public void setLanguage(String language) {
 		this.language = language;
 	}
 
-
-
 	public int getPages() {
 		return pages;
 	}
-
-
 
 	public void setPages(int pages) {
 		this.pages = pages;
@@ -105,11 +103,19 @@ public class BookModel {
 		this.price = price;
 	}
 
+<<<<<<< HEAD
 	public String getGenre() {
 		return genre;
 	}
 
 	public void setGenre(String genre) {
+=======
+	public String getGenres() {
+		return genre;
+	}
+
+	public void setGenres(String genre) {
+>>>>>>> 89f7c4be1217a2686122967bcb1ba2b751f38497
 		this.genre = genre;
 	}
 
@@ -128,19 +134,13 @@ public class BookModel {
 
 	@Override
 	public boolean equals(Object obj) {
-		if(this == obj)
-            return true;
-        if(obj == null || obj.getClass()!= this.getClass())
-            return false;
-          
-        BookModel book = (BookModel) obj;
-        return (book.bookName.equals(this.bookName) && book.authorName.equals(this.authorName));
+		if (this == obj)
+			return true;
+		if (obj == null || obj.getClass() != this.getClass())
+			return false;
+
+		BookModel book = (BookModel) obj;
+		return (book.bookName.equals(this.bookName) && book.authorName.equals(this.authorName));
 	}
-	
-	
-	
-	
-	
-	
 
 }

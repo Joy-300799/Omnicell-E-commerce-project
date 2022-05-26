@@ -62,8 +62,12 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter{
 					"/addBookInCart","/removeBookFromCart",
 					"/getBookByName","/getBooksByGenre",
 					"/getBooksByAuthorName","/addBookStock","/getBookStock",
+<<<<<<< HEAD
 					"/getAllBookStockOfParticularGenre","/getAllBookStock",
 					"/updateBookQuantity","/updateBookStock","/deleteBook")
+=======
+					"/getAllBookStockOfParticularGenre","/getAllBookStock")
+>>>>>>> 89f7c4be1217a2686122967bcb1ba2b751f38497
 			.permitAll()
 		.anyRequest()
 		.authenticated();
