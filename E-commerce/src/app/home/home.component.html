@@ -1,4 +1,6 @@
-<section class="py-5 header text-center">
+<div>
+
+<section class="py-5 text-center">
     <div class="container py-5 text-black">
         <header class="py-5">
             <h1 class="banner-header">Book Shelf</h1>
@@ -29,12 +31,9 @@
 <hr style="margin-bottom:20px">
 
 <div class="books-container-latest" style="display:flex;">
-
     <div class="img-div-latest" *ngFor="let item of latestReleases">
         <img src={{item.book.bookImgSrc}} class="book-img-latest" (click)="goToBookDetailPage(item.book.bookName)"
             alt="">
-
-
     </div>
 
 </div>
@@ -49,4 +48,5 @@
     </div>
 </div>
 
-<button (click)="goToBookForm()">Book Form</button> -->
+<button (click)="goToBookForm()">Book Form</button> 
+
