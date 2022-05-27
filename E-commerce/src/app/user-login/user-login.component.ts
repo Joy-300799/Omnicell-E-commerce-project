@@ -17,7 +17,9 @@ export class UserLoginComponent implements OnInit {
   username: any;
   firstPassword: any;
   secondPassword: any;
-  
+  phoneNumber: any;
+  emailId: any;
+
   loggedIn: boolean = false;
 
   ngOnInit(): void {
@@ -26,12 +28,13 @@ export class UserLoginComponent implements OnInit {
 
   handleLogin(): void {
     this.service
-      .login(new UsernamePassword(this.username, this.firstPassword))
+      .login(new LoginDetails(this.username, this.firstPassword))
       .subscribe({
         next: (response) => {
           console.log(response);
+          localStorage.setItem("token", response);
           this.logservice.changeLoginToLogout();
-          this.router.navigateByUrl("");
+          this.router.navigateByUrl("/home/" + this.username);
         },
         error: (error) => console.log(error),
       });
@@ -40,11 +43,10 @@ export class UserLoginComponent implements OnInit {
   handleSignUp(): void {
     if (this.firstPassword === this.secondPassword) {
       this.service
-        .signUp(new UsernamePassword(this.username, this.firstPassword))
+        .signUp(new SignUpDetails(this.username, this.firstPassword, this.phoneNumber, this.emailId))
         .subscribe({
           next: (response) => {
             console.log(response);
-            // this.logservice.changeLoginToLogout();
           },
           error: (error) => console.log(error),
         });
@@ -70,7 +72,21 @@ export class UserLoginComponent implements OnInit {
   }
 }
 
-class UsernamePassword {
+class SignUpDetails {
+  username: string;
+  password: string;
+  phoneNumber: number;
+  email: string;
+
+  constructor(username: string, password: string, phoneNumber: number, email: string) {
+    this.username = username;
+    this.password = password;
+    this.phoneNumber = phoneNumber;
+    this.email = email;
+  }
+}
+
+class LoginDetails {
   username: string;
   password: string;
 

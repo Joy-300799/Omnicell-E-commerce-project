@@ -9,6 +9,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { CartComponent } from './cart/cart.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { CategoryComponent } from './category/category.component';
+import { AuthguardGuard } from './authguard.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,6 +21,14 @@ const routes: Routes = [
   { path: 'signup', component: UserLoginComponent },
   { path: 'adminDashboard', component: AdminDashboardComponent },
   { path: 'category', component: CategoryComponent },
+  {
+    path: 'home/:username', component: HomeComponent,
+    children: [{
+      path: 'cart', component: CartComponent
+    }, {
+      path: 'categories', component: CategoryComponent
+    }]
+  }
 
 ];
 

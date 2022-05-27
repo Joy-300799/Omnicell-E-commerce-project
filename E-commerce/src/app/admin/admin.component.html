@@ -10,24 +10,28 @@
                     Admin Login
                 </span>
                 <hr>
-                <div class="wrap-input100 validate-input" data-validate="Valid username is required: ex@abc.xyz">
-                    <input class="input100" type="text" name="email" placeholder="Username" required>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="text" name="username" placeholder="Username" [(ngModel)]="username"
+                        required>
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
                         <img src="../../assets/contact.png" alt="">
                     </span>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Password is required">
-                    <input class="input100" type="password" name="pass" placeholder="Password" required>
-                    <span class="focus-input100"></span>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="password" name="password" placeholder="Password"
+                        [(ngModel)]="password" required>
+                    <span class="focus-input100" ></span>
                     <span class="symbol-input100">
                         <img src="../../assets/key.png" alt="">
                     </span>
                 </div>
 
+                <div *ngIf="showErrorMessage">Incorrect Username or Password</div>
+
                 <div class="container-login100-form-btn">
-                    <button class="login100-form-btn" routerLink="/adminDashboard">
+                    <button class="login100-form-btn" (click)="goToAdminDashBoard()">
                         Login
                     </button>
                 </div>

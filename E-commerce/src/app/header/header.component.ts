@@ -22,4 +22,8 @@ export class HeaderComponent implements OnInit {
     this.searchService.search(this.searchWord);
   }
 
+  logOut(){
+    localStorage.clear();
+  }
+
 }

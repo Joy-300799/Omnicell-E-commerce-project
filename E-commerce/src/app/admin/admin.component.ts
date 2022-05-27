@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  username: string = "";
+  password: string = "";
+  showErrorMessage = false;
+
+
+  constructor(private router : Router) { }
 
   ngOnInit(): void {
   }
+
+  goToAdminDashBoard(){
+    if(this.username==="admin" && this.password==="admin123"){
+      this.router.navigateByUrl("adminDashboard");
+      localStorage.setItem("key","value");
+      this.showErrorMessage = false;
+    }else{
+      this.showErrorMessage = true;
+    }
+  
+    
+  }
+
+
 
 }

@@ -32,11 +32,23 @@
                                 name="secondPassword" [(ngModel)]="secondPassword">
                         </div>
 
-                        <p style="color:red" *ngIf="!flag && firstPassword!=secondPassword">password not matching</p>
-                        
-                        <button type="submit" class="login-btn"  *ngIf="!flag">Sign Up</button>
+                        <div class="form-group last mb-3" *ngIf="!flag">
+                            <label for="phoneNumber">Contact No.</label>
+                            <input type="tel" class="form-control" placeholder="0000000000" id="phoneNumber"
+                                name="phoneNumber" [(ngModel)]="phoneNumber">
+                        </div>
 
-                        <button type="submit" class="login-btn"  *ngIf="flag">Login</button>
+                        <div class="form-group last mb-3" *ngIf="!flag">
+                            <label for="emailId">E-mail Address</label>
+                            <input type="tel" class="form-control" placeholder="xyz@test.com" id="emailId"
+                                name="emailId" [(ngModel)]="emailId">
+                        </div>
+
+                        <p style="color:red" *ngIf="!flag && firstPassword!=secondPassword">password not matching</p>
+
+                        <button type="submit" class="login-btn" *ngIf="!flag">Sign Up</button>
+
+                        <button type="submit" class="login-btn" *ngIf="flag">Login</button>
                         <br>
                         <hr style="margin-bottom:10px">
                         <span *ngIf="flag">Don't have an account? <strong (click)="routerSignUp()" routerLink="signup"
