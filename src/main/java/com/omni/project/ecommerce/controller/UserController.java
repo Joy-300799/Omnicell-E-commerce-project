@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +20,7 @@ import com.omni.project.ecommerce.bookServices.StockService;
 import com.omni.project.ecommerce.bookServices.UserService;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins="*")
 public class UserController {
 	
 	@Autowired
@@ -59,7 +60,6 @@ public class UserController {
 		}catch(Exception e) {
 			return  new ResponseEntity<String>("Book Not found",HttpStatus.NOT_FOUND);
 		}
-		
 	}
 	
 	@DeleteMapping("/buyAllBookInCart")

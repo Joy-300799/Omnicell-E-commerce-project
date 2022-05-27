@@ -86,7 +86,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter{
 //		.authenticated();
 		
 		
-		http.csrf().disable().authorizeRequests().antMatchers("/login", "/signup").permitAll()
+		http.csrf().disable().authorizeRequests().antMatchers("/login", "/signup","/getAllBookStock","/getBookStock").permitAll()
 		.anyRequest().authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		
 		http.addFilterBefore(jwtFilterRequest, UsernamePasswordAuthenticationFilter.class);
