@@ -6,8 +6,7 @@
             <div class="row align-items-center justify-content-center">
                 <div class="col-md-8">
                     <h3>{{flag?"Login to ":"Sign Up "}}<strong>BookShelf</strong></h3>
-                    <p class="mb-6"><i>{{flag?"Login to the world of books and take away your choice with a
-                            smile.":"Register yourself and experience the serenity of the books and their words."}}</i>
+                    <p class="mb-6"><i>{{flag?"Login to the world of books and take away your choice with a smile.":"Register yourself and experience the serenity of the books and their words."}}</i>
                     </p>
                     <br>
 
@@ -50,9 +49,11 @@
 
                         <button type="submit" class="login-btn" *ngIf="flag">Login</button>
                         <br>
-                        <hr style="margin-bottom:10px">
+                        <br>
+                        <hr>
                         <span *ngIf="flag">Don't have an account? <strong (click)="routerSignUp()" routerLink="signup"
-                                type="button" id="sign-up">Sign Up</strong></span>
+                                type="button" id="sign-up">Sign
+                                Up</strong></span>
                         <span *ngIf="!flag">Already have an account? <strong (click)="routerLogin()" routerLink="login"
                                 type="button" id="login">login</strong></span>
 

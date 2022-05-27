@@ -20,7 +20,7 @@
     letter-spacing: 2px;
 }
 
-.header {
+section {
     background-image: url(../../assets/aaron-burden-H8s0PF2rcQs-unsplash.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -47,16 +47,17 @@
     display: flex;
     /* border: 1px solid #333; */
     height: 40%;
-    width:100vw;
-    overflow-y :auto;
+    width: 100vw;
+    overflow-y: auto;
     white-space: no-wrap;
 }
 
 .book-img-latest {
     height: 100%;
     width: 15vw;
-    margin:0% 10vw;
-    padding:10px;
+    margin-right: 19.5vw;
+    padding: 10px;
+    /* margin-bottom: 10px; */
 }
 
 
@@ -65,12 +66,19 @@
     cursor: pointer;
     box-shadow: 0 0 10px #5f5f5d;
     transition: 0.2s ease-out;
-    transform: scale(1.1);
+    overflow: hidden;
+    /* transform: scale(1.1); */
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 .img-div-latest {
     /* border:1px solid #999; */
     width: 30%;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 /* .img-div-latest figure img {
