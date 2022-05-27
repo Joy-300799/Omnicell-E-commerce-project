@@ -23,68 +23,91 @@
 <!--Add new book-->
 <div class="wrapper" *ngIf="addBookClicked">
     <div class="section">
-        <form [formGroup]="newBookForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="newBookForm" (ngSubmit)="onSubmit(); newBookForm.reset();">
 
             <div class="form-outline mb-4">
-                <input type="text" id="book-name" name="bookname" formControlName="bookName" class="form-control"
-                    placeholder="Book Name" required minlength="4" />
-
+                <input type="text" id="name" name="name" formControlName="bookName" class="form-control"
+                    placeholder="Book Name" />
+                <div *ngIf="bookName?.invalid && !bookName?.untouched"
+                    class="alert-danger"><p>
+                        Invalid book name
+                    </p>
+            </div>
             </div>
 
             <div class="form-outline mb-4">
-                <input type="text" id="form6Example5" formControlName="authorName" class="form-control"
+                <input type="text" id="author" formControlName="authorName" class="form-control"
                     placeholder="Author Name" required />
+                    <div *ngIf="authorName?.invalid && !authorName?.untouched"
+                    class="alert-danger"><p>Invalid author name</p>
+            </div>
             </div>
 
             <div class="form-outline mb-4">
-                <input type="text" id="form6Example5" formControlName="genre" class="form-control" placeholder="Genre"
+                <input type="text" id="genre" formControlName="genre" class="form-control" placeholder="Genre"
                     required />
+                    <div *ngIf="genre?.invalid && !genre?.untouched"
+                    class="alert-danger"><p>invalid genre</p>
+            </div>
             </div>
 
             <!-- Text input -->
             <div class="form-outline mb-4">
-                <textarea class="form-control" id="form6Example7" rows="4" formControlName="description"
+                <textarea class="form-control" id="description" rows="4" formControlName="description"
                     placeholder="Description" required></textarea>
+                    <div *ngIf="description?.invalid && !description?.untouched"
+                    class="alert-danger"><p>invalid description</p>
+            </div>
             </div>
 
 
             <div class="row mb-4">
                 <div class="col">
                     <div class="form-outline">
-                        <input type="number" id="form6Example1" formControlName="price" class="form-control"
+                        <input type="number" id="price" formControlName="price" class="form-control"
                             placeholder="price" required />
                     </div>
+                    <div *ngIf="price?.invalid && !price?.untouched"
+                    class="alert-danger"><p>Invalid price</p>
+            </div>
                 </div>
                 <div class="col">
                     <div class="form-outline">
-                        <input type="number" id="form6Example2" formControlName="quantity" class="form-control"
+                        <input type="number" id="qusntity" formControlName="quantity" class="form-control"
                             placeholder="quantity" required />
                     </div>
+                    <div *ngIf="quantity?.invalid && !quantity?.untouched"
+                    class="alert-danger"><p>Invalid quantity</p>
+            </div>
                 </div>
             </div>
-            <!-- page number input -->
 
             <div class="form-outline mb-4">
-                <input type="number" id="form6Example5" formControlName="pages" class="form-control"
+                <input type="number" id="pages" formControlName="pages" class="form-control"
                     placeholder="Number of pages" required />
-
+                    <div *ngIf="pages?.invalid && !pages?.untouched"
+                    class="alert-danger"><p>Invalid number of pages</p>
+            </div>
             </div>
 
-            <!-- language input -->
             <div class="form-outline mb-4">
-                <input type="text" id="form6Example6" formControlName="language" class="form-control"
+                <input type="text" id="language" formControlName="language" class="form-control"
                     placeholder="Language" required />
-
+                    <div *ngIf="language?.invalid && !language?.untouched"
+                    class="alert-danger"><p>Invalid language</p>
+            </div>
             </div>
 
             <div class="form-outline mb-4">
-                <input type="text" id="form6Example6" formControlName="bookImgSrc" class="form-control"
+                <input type="text" id="imagesrc" formControlName="bookImgSrc" class="form-control"
                     placeholder="Cover picture link" required />
-
+                    <div *ngIf="bookImgSrc?.invalid && !bookImgSrc?.untouched"
+                    class="alert-danger"><p>Invalid cover link</p>
+            </div>
             </div>
 
             <!-- add button -->
-            <button type="submit" class="add-book-btn">Add Book</button>
+            <button type="submit" *ngIf="newBookForm.valid" class="add-book-btn">Add Book</button>
         </form>
 
     </div>

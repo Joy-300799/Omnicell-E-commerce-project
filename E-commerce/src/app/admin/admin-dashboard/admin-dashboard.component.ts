@@ -15,13 +15,13 @@ export class AdminDashboardComponent implements OnInit {
 
   bookList: any;
 
-  constructor(private service: AppServiceService) { }
+  constructor(private service: AppServiceService) {}
 
   ngOnInit(): void {
     this.service.getAllBooks().subscribe({
-      next: (data) => this.bookList = data,
-      error: (error) => console.log(error)
-    })
+      next: (data) => (this.bookList = data),
+      error: (error) => console.log(error),
+    });
   }
 
   toggleAddBook() {
@@ -43,20 +43,56 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   newBookForm = new FormGroup({
-    bookName: new FormControl("", [Validators.required]),
-    authorName: new FormControl("", [Validators.required]),
-    description: new FormControl(),
-    genre: new FormControl("", [Validators.required]),
-    language: new FormControl(),
-    pages: new FormControl(),
-    quantity: new FormControl("", [Validators.required]),
-    price: new FormControl("", [Validators.required]),
-    bookImgSrc: new FormControl(),
+    bookName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(5),
+    ]),
+    authorName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(5),
+    ]),
+    description: new FormControl('', [Validators.required]),
+    genre: new FormControl('', [Validators.required]),
+    language: new FormControl('', [Validators.required]),
+    pages: new FormControl('', [Validators.required]),
+    quantity: new FormControl('', [Validators.required]),
+    price: new FormControl('', [Validators.required]),
+    bookImgSrc: new FormControl('', [Validators.required]),
   });
-
-  editBook() {
-
+get price(){
+  return this.newBookForm.get('price');
+}
+  get bookName() {
+    return this.newBookForm.get('bookName');
   }
+
+  get authorName() {
+    return this.newBookForm.get('authorName');
+  }
+
+  get description() {
+    return this.newBookForm.get('description');
+  }
+
+  get genre() {
+    return this.newBookForm.get('genre');
+  }
+
+  get quantity() {
+    return this.newBookForm.get('quantity');
+  }
+
+  get pages() {
+    return this.newBookForm.get('pages');
+  }
+  get language() {
+    return this.newBookForm.get('language');
+  }
+  get bookImgSrc() {
+    return this.newBookForm.get('bookImgSrc');
+  }
+
+  editBook() {}
 
   deleteBook(bookName: string, index: number) {
     this.service.deleteBook(bookName).subscribe({
@@ -68,12 +104,11 @@ export class AdminDashboardComponent implements OnInit {
         // })
       },
       error: (error) => {
-        console.log("error");
-        console.log(error)
-      }
+        console.log('error');
+        console.log(error);
+      },
     });
     this.bookList.splice(index, 1);
-
   }
 
   onSubmit() {
@@ -142,4 +177,3 @@ export class BookStock {
     this.quantity = quantity;
   }
 }
-

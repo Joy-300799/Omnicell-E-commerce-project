@@ -10,9 +10,11 @@ import { SearchService } from '../search.service';
   styleUrls: ['./user-login.component.css'],
 })
 export class UserLoginComponent implements OnInit {
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private service: AuthenticationService,
-    private logservice: SearchService) { }
+    private logservice: SearchService
+  ) {}
   flag: boolean = true;
   username: any;
   firstPassword: any;
@@ -32,9 +34,9 @@ export class UserLoginComponent implements OnInit {
       .subscribe({
         next: (response) => {
           console.log(response);
-          localStorage.setItem("token", response);
+          localStorage.setItem('token', response);
           this.logservice.changeLoginToLogout();
-          this.router.navigateByUrl("/home/" + this.username);
+          this.router.navigateByUrl('/home/' + this.username);
         },
         error: (error) => console.log(error),
       });
@@ -43,7 +45,14 @@ export class UserLoginComponent implements OnInit {
   handleSignUp(): void {
     if (this.firstPassword === this.secondPassword) {
       this.service
-        .signUp(new SignUpDetails(this.username, this.firstPassword, this.phoneNumber, this.emailId))
+        .signUp(
+          new SignUpDetails(
+            this.username,
+            this.firstPassword,
+            this.phoneNumber,
+            this.emailId
+          )
+        )
         .subscribe({
           next: (response) => {
             console.log(response);
@@ -66,9 +75,9 @@ export class UserLoginComponent implements OnInit {
   }
 
   resetFormFields() {
-    this.username = "";
-    this.firstPassword = "";
-    this.secondPassword = "";
+    this.username = '';
+    this.firstPassword = '';
+    this.secondPassword = '';
   }
 }
 
@@ -78,7 +87,12 @@ class SignUpDetails {
   phoneNumber: number;
   email: string;
 
-  constructor(username: string, password: string, phoneNumber: number, email: string) {
+  constructor(
+    username: string,
+    password: string,
+    phoneNumber: number,
+    email: string
+  ) {
     this.username = username;
     this.password = password;
     this.phoneNumber = phoneNumber;

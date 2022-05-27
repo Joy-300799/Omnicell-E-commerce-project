@@ -68,10 +68,10 @@ nav ul li a:hover:before {
     left: 42%;
     display: grid;
     place-items: center;
-    min-height: 100vh;
+    min-height:auto;
     position: absolute;
     text-align: center;
-    top: 2%;
+    top: 10%;
 }
 
 .box-area h2 {
@@ -99,6 +99,7 @@ nav ul li a:hover:before {
     /* border:1px solid #333; */
     padding: 20px;
     box-shadow: 0 0 10px #999;
+    height:auto;
 }
 
 .single-book-modal {
