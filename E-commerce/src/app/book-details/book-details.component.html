@@ -21,9 +21,12 @@
         <br>
         <p>language: {{book.book.language}}</p>
         <br>
-        <button [disabled]="book.quantity==0" style="cursor:not-allowed;" (click)="addToCart()" class="cart-btn"> ADD TO
+        <input type="text" class="border" name="username" [(ngModel)]="username">
+        <button [disabled]="book.quantity==0" style="cursor:not-allowed;" (click)="addToCart(book.book.bookName)" class="cart-btn"> ADD TO
             CART
         </button>
+
+        
 
 
     </div>

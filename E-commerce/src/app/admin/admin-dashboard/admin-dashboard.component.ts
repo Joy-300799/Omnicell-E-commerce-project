@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppServiceService } from '../../app-service.service';
 
 @Component({
@@ -43,14 +43,14 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   newBookForm = new FormGroup({
-    bookName: new FormControl(),
-    authorName: new FormControl(),
+    bookName: new FormControl("", [Validators.required]),
+    authorName: new FormControl("", [Validators.required]),
     description: new FormControl(),
-    genre: new FormControl(),
+    genre: new FormControl("", [Validators.required]),
     language: new FormControl(),
     pages: new FormControl(),
-    quantity: new FormControl(),
-    price: new FormControl(),
+    quantity: new FormControl("", [Validators.required]),
+    price: new FormControl("", [Validators.required]),
     bookImgSrc: new FormControl(),
   });
 
@@ -62,12 +62,15 @@ export class AdminDashboardComponent implements OnInit {
     this.service.deleteBook(bookName).subscribe({
       next: (data) => {
         // this.bookList=this.bookList.splice(index, 1),
-          // console.log(data)
+        // console.log(data)
         // this.service.getAllBooks().subscribe({
         //   next:(data)=>{this.bookList=data}
         // })
       },
-      error: (error) => console.log(error)
+      error: (error) => {
+        console.log("error");
+        console.log(error)
+      }
     });
     this.bookList.splice(index, 1);
 
@@ -85,6 +88,7 @@ export class AdminDashboardComponent implements OnInit {
       this.newBookForm.value.language,
       this.newBookForm.value.pages
     );
+    console.log(book);
     this.service
       .addBook(new BookStock(book, this.newBookForm.value.quantity))
       .subscribe({

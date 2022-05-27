@@ -11,12 +11,17 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   login(credential: any) {
-    // console.log(credential);
-    return this.http.post(this.baseUrl + "/login", credential);
+    return this.http.post(this.baseUrl + "/login", credential, { responseType: "text" });
   }
 
   signUp(userDetail: any) {
     return this.http.post(this.baseUrl + "/signup", userDetail);
   }
+
+  isLoggedIn() {
+    return !!localStorage.getItem("key");
+  }
+
+
 
 }
