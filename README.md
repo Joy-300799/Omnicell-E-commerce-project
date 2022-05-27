@@ -1,6 +1,4 @@
-#Omnicell-E-commerce-project
-
-### E-commerce Book Application
+# E-commerce Book Application
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3. 
 - This git repositiory contains 2 branches, Main-> Angular code & Master-> Spring boot code.
@@ -8,6 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Download dependencies
 
 - Change directory to Omnicell-E-commerce-project/E-commerce/ 
+
 Run `npm install` to download/activate node_modules, which will install all the dependencies used in the application.
 
 ## Development server
