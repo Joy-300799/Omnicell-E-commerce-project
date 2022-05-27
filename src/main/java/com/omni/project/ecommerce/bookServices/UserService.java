@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.omni.project.ecommerce.Model.BookModel;
 import com.omni.project.ecommerce.Model.UserAllDetails;
-import com.omni.project.ecommerce.repository.StockRepository;
 import com.omni.project.ecommerce.repository.UserDetailRepository;
 
 @Service

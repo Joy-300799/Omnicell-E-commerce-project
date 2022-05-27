@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +20,9 @@ import com.omni.project.ecommerce.Model.UserAllDetails;
 import com.omni.project.ecommerce.Model.UserCompleteDetailRequestBody;
 import com.omni.project.ecommerce.Model.UserPassModel;
 import com.omni.project.ecommerce.bookServices.AuthenticationService;
+import com.omni.project.ecommerce.bookServices.BookUserDetailService;
 import com.omni.project.ecommerce.bookServices.UserService;
+import com.omni.project.ecommerce.security.JwtUtils;
 
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
@@ -29,6 +33,12 @@ public class AuthenticationController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	BookUserDetailService userDetailService;
+	
+	@Autowired
+	private JwtUtils jwtUtils;
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -45,18 +55,33 @@ public class AuthenticationController {
 		return ResponseEntity.ok(newUser);
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@PostMapping("/login")
 	public ResponseEntity<?> checkUser(@RequestBody AuthenticationRequest newUser) {
 		String username = newUser.getUsername();
 		String password = newUser.getPassword();
-//		authenticationManager
-//		.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-//		return "authentication success";
-		if (authService.login(username, password)) {
-//			return new ResponseEntity("authentication success", HttpStatus.OK);
-			return ResponseEntity.ok(new ResponseEntity("authentication success", HttpStatus.OK));
+		try {
+			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+		}catch (Exception e) {
+			return new ResponseEntity("Unauthorized", HttpStatus.UNAUTHORIZED); 
 		}
-		return new ResponseEntity("Unauthorized", HttpStatus.UNAUTHORIZED); 
+
+		UserDetails loadedUser = userDetailService.loadUserByUsername(username);
+		String generatedToken = jwtUtils.generateToken(loadedUser);
+		
+		return ResponseEntity.ok(generatedToken);
+		
+		
+		
+		
+		
+		
+//		String username = newUser.getUsername();
+//		String password = newUser.getPassword();
+//		if (authService.login(username, password)) {
+//			return new ResponseEntity("authentication success", HttpStatus.OK);
+//		}
+//		return new ResponseEntity("Unauthorized", HttpStatus.UNAUTHORIZED); 
 	}
 	
 	@GetMapping("/all")

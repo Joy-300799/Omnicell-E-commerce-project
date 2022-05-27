@@ -65,7 +65,7 @@ public class StockController {
 			this.stockService.updateBookQuantity(name, additionalQuantity);
 			return new ResponseEntity<>("updated successfully", HttpStatus.OK);
 		}catch(Exception e) {
-			throw new Exception(e);
+			return new ResponseEntity<>("Book Not found", HttpStatus.NOT_FOUND);
 		}
 	}
 	
@@ -74,8 +74,8 @@ public class StockController {
 		try {
 			this.stockService.deleteBook(name);
 //			return new ResponseEntity<>("deleted successfully", HttpStatus.OK);
-//			return ResponseEntity.ok("deleted successfully");
-			return new ResponseEntity<>("authentication success", HttpStatus.OK);
+			return ResponseEntity.ok("deleted successfully");
+//			return new ResponseEntity<>("authentication success", HttpStatus.OK);
 		}catch(Exception e) {
 			throw new Exception(e);
 		}

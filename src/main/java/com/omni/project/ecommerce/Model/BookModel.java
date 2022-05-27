@@ -20,7 +20,7 @@ public class BookModel {
 	private String bookImgSrc;
 	private String language;
 	private int pages;
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	
 	
 	public BookModel(String bookName,
@@ -31,11 +31,11 @@ public class BookModel {
 					String bookImgSrc,
 					String language,
 					int pages) {
-=======
-
-	public BookModel(String bookName, String authorName, String description, double price, String genre,
-			String bookImgSrc, String language, int pages) {
->>>>>>> 89f7c4be1217a2686122967bcb1ba2b751f38497
+//=======
+//
+//	public BookModel(String bookName, String authorName, String description, double price, String genre,
+//			String bookImgSrc, String language, int pages) {
+//>>>>>>> 89f7c4be1217a2686122967bcb1ba2b751f38497
 		this.id = new ObjectId();
 		this.bookName = bookName;
 		this.authorName = authorName;
@@ -103,21 +103,15 @@ public class BookModel {
 		this.price = price;
 	}
 
-<<<<<<< HEAD
 	public String getGenre() {
 		return genre;
 	}
-
-	public void setGenre(String genre) {
-=======
+	
+	
 	public String getGenres() {
 		return genre;
 	}
 
-	public void setGenres(String genre) {
->>>>>>> 89f7c4be1217a2686122967bcb1ba2b751f38497
-		this.genre = genre;
-	}
 
 	public String getBookImgSrc() {
 		return bookImgSrc;

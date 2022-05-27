@@ -10,18 +10,25 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.omni.project.ecommerce.Model.UserPassModel;
+import com.omni.project.ecommerce.repository.UserPassRepository;
 
 @Service
 public class BookUserDetailService implements UserDetailsService {
 	
 	@Autowired
-	AuthenticationService service;
+	private UserPassRepository userRepo;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserPassModel user = service.getUserByUsername(username).get();
+		UserPassModel user = userRepo.findById(username).get();
+		if(user == null) return null;
 		
-		return new User(user.getUsername(),user.getPassword(),null);
+		String name = user.getUsername();
+		String password = user.getPassword();
+		
+		return new User(name, password, new ArrayList<>());
 	}
 
 }
+
+
