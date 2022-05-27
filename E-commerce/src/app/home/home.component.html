@@ -1,69 +1,49 @@
 <div>
 
-<section class="py-5 text-center">
-    <div class="container py-5 text-black">
-        <header class="py-5">
-            <h1 class="banner-header">Book Shelf</h1>
-            <hr class="hr">
-            <p class="banner-quote"><i>There is only one thing that could replace a book: The next book.</i></p>
-        </header>
+    <section class="py-5 text-center">
+        <div class="container py-5 text-black">
+            <header class="py-5">
+                <h1 class="banner-header">Book Shelf</h1>
+                <hr class="hr">
+                <p class="banner-quote"><i>There is only one thing that could replace a book: The next book.</i></p>
+            </header>
+        </div>
+    </section>
+    
+    <div *ngIf="searchedWord.length">
+        <hr style="margin-top:20px">
+        <h1 class="category-header">Searched Books</h1>
+        <hr style="margin-bottom:20px">
+
+        <div class="books-container-latest" style="display:flex;">
+
+            <div class="img-div-latest" *ngFor="let item of searchList">
+
+                <img src={{item.book.bookImgSrc}} class="book-img-latest"
+                    (click)="goToBookDetailPage(item.book.bookName)" alt="">
+            </div>
+
+        </div>
     </div>
-</section>
-<div *ngIf="searchedWord.length">
+
     <hr style="margin-top:20px">
-    <h1 class="category-header">Searched Books</h1>
+    <h1 class="category-header">Latest Releases</h1>
     <hr style="margin-bottom:20px">
 
     <div class="books-container-latest" style="display:flex;">
-
-        <div class="img-div-latest" *ngFor="let item of searchList">
+        <div class="img-div-latest" *ngFor="let item of latestReleases">
             <img src={{item.book.bookImgSrc}} class="book-img-latest" (click)="goToBookDetailPage(item.book.bookName)"
                 alt="">
-
-
         </div>
 
     </div>
-</div>
 
-
-
-<!-- <hr style="margin-top:20px">
-<h1 class="category-header">All Books</h1>
-<hr style="margin-bottom:20px">
-
-<div class="books-container-latest" style="display:flex;">
-
-    <div class="img-div-latest" *ngFor="let item of bookList">
-        <img src={{item.book.bookImgSrc}} class="book-img-latest" (click)="goToBookDetailPage(item.book.bookName)"
-            alt="">
-
-
+    <hr style="margin-top:20px">
+    <h1 class="category-header">Most Recommended</h1>
+    <hr style="margin-bottom:20px">
+    <div class="books-container-latest">
+        <div class="img-div-latest" *ngFor="let item of mostRecommended">
+            <img src={{item.book.bookImgSrc}} class="book-img-latest" (click)="goToBookDetailPage(item.book.bookName)"
+                alt="">
+        </div>
     </div>
-
-</div> -->
-
-<hr style="margin-top:20px">
-<h1 class="category-header">Latest Releases</h1>
-<hr style="margin-bottom:20px">
-
-<div class="books-container-latest" style="display:flex;">
-    <div class="img-div-latest" *ngFor="let item of latestReleases">
-        <img src={{item.book.bookImgSrc}} class="book-img-latest" (click)="goToBookDetailPage(item.book.bookName)"
-            alt="">
-    </div>
-
-</div>
-
-<hr style="margin-top:20px">
-<h1 class="category-header">Most Recommended</h1>
-<hr style="margin-bottom:20px">
-<div class="books-container-latest">
-    <div class="img-div-latest" *ngFor="let item of mostRecommended">
-        <img src={{item.book.bookImgSrc}} class="book-img-latest" (click)="goToBookDetailPage(item.book.bookName)"
-            alt="">
-    </div>
-</div>
-
-<button (click)="goToBookForm()">Book Form</button> 
-

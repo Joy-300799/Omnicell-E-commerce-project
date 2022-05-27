@@ -26,8 +26,8 @@
         <form [formGroup]="newBookForm" (ngSubmit)="onSubmit()">
 
             <div class="form-outline mb-4">
-                <input type="text" id="form6Example5" formControlName="bookName" class="form-control"
-                    placeholder="Book Name" required />
+                <input type="text" id="book-name" name="bookname" formControlName="bookName" class="form-control"
+                    placeholder="Book Name" required minlength="4" />
 
             </div>
 
@@ -98,7 +98,7 @@
 
         <div class="single-book-modal" *ngFor="let item of bookList,index as i">
             <img src={{item.book.bookImgSrc}} alt="" style="height:170px; width:120px">
-            <div class="single-book-details" >
+            <div class="single-book-details">
                 <h1>{{item.book.bookName}}</h1>
                 <h3>-{{item.book.authorName}}</h3>
                 <hr>
@@ -114,29 +114,6 @@
 
             </div>
         </div>
-
-
-        <!-- <div class="single-book-modal">
-            <img src="../../../assets/the-two-towers.jpg" alt="">
-            <div class="single-book-details">
-                <h1>The Two Towers</h1>
-                <h3>-Michael dowris</h3>
-                <hr>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum officiis minima, ducimus
-                    aperiam, itaque eveniet rem, porro dolorem voluptatibus excepturi eos dignissimos. Aut nam
-                    dignissimos doloremque ducimus, earum reiciendis!</p>
-                <p>language: English</p>
-                <div class="availability">
-                    <p>In stock</p>
-                </div>
-                <img src="../../../assets/pencil.png" alt="" id="edit">
-                <img src="../../../assets/bin.png" alt="" id="delete">
-            </div>
-            <div> 
-
-            </div>
-        </div> -->
-
     </div>
 </div>
 

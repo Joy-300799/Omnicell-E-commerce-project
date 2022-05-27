@@ -10,31 +10,34 @@ export class CartComponent implements OnInit {
   cardPay: boolean = false;
   upiPay: boolean = false;
   codPay: boolean = false;
-
+  overlay: boolean = false;
   checkout: boolean = false;
+
   constructor() {}
 
   ngOnInit(): void {}
 
-  cardPayment(){
+  cardPayment() {
     this.cardPay = !this.cardPay;
     this.upiPay = false;
     this.codPay = false;
   }
 
-  upiPayment(){
+  upiPayment() {
     this.cardPay = false;
     this.upiPay = !this.upiPay;
     this.codPay = false;
   }
 
-  codPayment(){
+  codPayment() {
     this.cardPay = false;
     this.upiPay = false;
     this.codPay = !this.codPay;
   }
 
-  toggleCheckout(){
-    this.checkout = !this.checkout;
+  toggleCheckout() {
+    this.checkout = true;
   }
+
+
 }

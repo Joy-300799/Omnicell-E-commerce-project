@@ -1,4 +1,4 @@
-<div *ngFor="let genre of genres,index as i">
+<!-- <div *ngFor="let genre of genres,index as i">
     <div>
         <button (click)="getBook(genre)">{{genre}}</button>
     </div>
@@ -11,6 +11,81 @@
     <div (click)="goToBookDetail(book.book.bookName)">
         <img src={{book.book.bookImgSrc}} alt="">
         <p>{{book.book.bookName}}</p>
+    </div>
+
+</div> -->
+
+<!-- <div style="top:100px;left:25px; position:absolute; border:1px solid black;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>CATEGORIES</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    Action And Adventure</td>
+            </tr>
+            <tr>
+                <td>Autobiographies</td>
+            </tr>
+            <tr>
+                <td>Classics</td>
+            </tr>
+
+            <tr>
+                <td>Fantasy</td>
+            </tr>
+            <tr>
+                <td>Horror</td>
+            </tr>
+            <tr>
+                <td>Romance</td>
+            </tr>
+            <tr>
+                <td>Sci-Fi</td>
+            </tr>
+            <tr>
+                <td>Science And Thrillers</td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+
+
+
+<div id="mySidenav" class="sidenav">
+    <h1>CATEGORIES</h1>
+    <hr style="color:white; margin-bottom:20px;">
+
+    <div *ngFor="let category of categories, let i = index">
+        <hr style="color:white;">
+
+        <a><span><img src="{{imgArray[i]}}">&nbsp; {{category}}</span></a>
+        <hr style="color:white;">
+
+    </div>
+
+</div>
+
+
+<div id="main">
+    <img src="../../../assets/the-two-towers.jpg" alt="" id="bookImg">
+    <div class="single-book-details">
+        <h1>The Two Towers</h1>
+        <h3>-Michael dowris</h3>
+        <hr>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum officiis minima, ducimus
+            aperiam, itaque eveniet rem, porro dolorem voluptatibus excepturi eos dignissimos. Aut nam
+            dignissimos doloremque ducimus, earum reiciendis!</p>
+        <p>language: English</p>
+        <div class="availability">
+            <p>In stock</p>
+        </div>
+        <button type="button" class="addtocartbtn"><span style="display:flex;justify-content:center;">Add to cart &nbsp;
+                <img src="../../assets/shopping-bag.png" alt="" style="height:20px;"></span>
+        </button>
     </div>
 
 </div>
