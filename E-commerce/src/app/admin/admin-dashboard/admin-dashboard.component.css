@@ -62,13 +62,14 @@ nav ul li a:hover:before {
 
 .wrapper {
     margin-left: 260px;
+    border-top: 1px solid blue;
 }
 
 .section {
     left: 42%;
     display: grid;
     place-items: center;
-    min-height:auto;
+    min-height: auto;
     position: absolute;
     text-align: center;
     top: 10%;
@@ -99,59 +100,71 @@ nav ul li a:hover:before {
     /* border:1px solid #333; */
     padding: 20px;
     box-shadow: 0 0 10px #999;
-    height:auto;
+    height: auto;
+}
+
+.section-viewAllBooks {
+    /* border: 1px solid rgb(36, 197, 55); */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+    background-image: linear-gradient(to right, rgb(177, 177, 177), teal);
 }
 
 .single-book-modal {
     top: 13%;
-    /* border: 2px solid #444; */
+    /* border: 2px solid rgb(236, 73, 73); */
     display: flex;
-    height: 200px;
-    position: absolute;
+    margin-left: 70px;
+    height: 250px;
     left: 20%;
     padding: 20px;
-    width: 70%;
-    margin-bottom: 30px;
+    width: 80%;
 }
 
 .single-book-modal:hover {
-    box-shadow: 0 0 10px rgb(128, 128, 128);
+    box-shadow: 0 0 20px rgb(22, 22, 22);
     transition: 0.3s ease;
 }
 
-.single-book-modal img {
-    margin-left: 50px;
+#bookImg {
+    margin-left: 30px;
+    height: 200px;
+    width: 150px
+}
+
+.actions {
+    margin-top: 20px;
+    display: flex;
+    margin-left: 362px;
 }
 
 .single-book-details {
-
     margin-left: 50px;
     width: 70%;
 }
 
 .availability {
-    position: absolute;
+    /* position: absolute; */
     top: 73%;
+    width: 100px;
     left: 72%;
     border: none;
     padding: 1px;
     background-color: #f00202;
     color: white;
+    text-align: center;
 }
 
 #edit {
-    top: 19%;
-    position: absolute;
-    right: 4%;
-    height: 30px;
-    width: 30px;
+    height: 20px;
+    width: 20px;
 }
 
 #delete {
-    position: absolute;
-    top: 59%;
-    right: 3.8%;
-    height: 36px;
+    height: 20px;
+    width: 20px;
 }
 
 h1 {
@@ -172,4 +185,23 @@ h3 {
 .add-book-btn:active {
     transform: scale(0.98);
     box-shadow: 3px 2px 22px 1px rgba(3, 3, 3, 0.24);
+}
+
+#prev {
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    /* border:1px solid blue; */
+    background-color: skyblue;
+    width: 100px;
+}
+
+#next {
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    /* border:1px solid blue; */
+    background-color: rgb(249, 175, 48);
+    width: 70px;
+    /* margin-left:-108px; */
 }

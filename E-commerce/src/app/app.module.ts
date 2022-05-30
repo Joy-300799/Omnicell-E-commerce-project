@@ -9,15 +9,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserLoginComponent } from './user-login/user-login.component';
-import { UserSignUpComponent } from './user-login/user-sign-up/user-sign-up.component';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { CartComponent } from './cart/cart.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
-import { FooterComponent } from './footer/footer.component';
 import { CategoryComponent } from './category/category.component';
-import { AuthguardGuard } from './authguard.guard';
+import { AuthguardGuard } from '../app/guard/authguard.guard';
 import { AuthorizeInterceptor } from './authorize.interceptor';
 
 @NgModule({
@@ -25,13 +23,11 @@ import { AuthorizeInterceptor } from './authorize.interceptor';
     AppComponent,
     HeaderComponent,
     UserLoginComponent,
-    UserSignUpComponent,
     HomeComponent,
     AdminComponent,
     CartComponent,
     AdminDashboardComponent,
     BookDetailsComponent,
-    FooterComponent,
     CategoryComponent,
   ],
 
@@ -45,7 +41,7 @@ import { AuthorizeInterceptor } from './authorize.interceptor';
     FontAwesomeModule,
     ReactiveFormsModule,
   ],
-  providers: [AuthguardGuard,[{provide:HTTP_INTERCEPTORS,useClass:AuthorizeInterceptor,multi:true}]],
+  providers: [AuthguardGuard, [{ provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }]],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

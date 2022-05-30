@@ -11,7 +11,6 @@ import {
 export class AuthorizeInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         let newReq = req;
-        // let token = this.authSecurityService.getToken();
         let token = localStorage.getItem("token");
         console.log('interceptor', token);
         if (token != null) {

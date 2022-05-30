@@ -12,6 +12,12 @@ export class SearchService {
   private login = new BehaviorSubject<boolean>(true);
   logout = this.login.asObservable();
 
+  private adminLogin = new BehaviorSubject<boolean>(true);
+  changeAfterAdminLogin = this.adminLogin.asObservable();
+
+  private adminLogOut = new BehaviorSubject<Boolean>(true);
+  changeAfterAdminLogOut = this.adminLogOut.asObservable();
+
 
   constructor() { }
 
@@ -20,7 +26,18 @@ export class SearchService {
   }
 
   changeLoginToLogout() {
-    this.login.next(!this.login.value);
+    this.login.next(false);
     return this.login.value;
   }
+
+  hideIconAfterAdminLogin(){
+    this.adminLogin.next(false);
+    return this.adminLogin.value;
+  }
+
+  showIconAfterAdminLogOut(){
+    this.adminLogOut.next(false);
+    return this.adminLogOut.value;
+  }
+  
 }

@@ -9,11 +9,8 @@
         <li (click)="toggleViewBooks()"><a><span><img src="../../../assets/books-stack-of-three.png" alt=""
                         class="action-logo">&nbsp; &nbsp; &nbsp;
                     &nbsp; Books List</span></a></li>
-        <li (click)="toggleFav()"><a><span><img src="../../../assets/heart.png" alt="" class="action-logo">&nbsp; &nbsp;
-                    &nbsp; &nbsp;
-                    Favourites</span></a></li>
 
-        <li style="margin-top:140%;" routerLink="/admin"><a><span><img src="../../../assets/log-out.png" alt=""
+        <li style="margin-top:140%;" routerLink="/admin" (click)="logOut()"><a><span><img src="../../../assets/log-out.png" alt=""
                         class="action-logo">&nbsp;
                     &nbsp; &nbsp; &nbsp; Sign
                     Out</span></a></li>
@@ -23,150 +20,230 @@
 <!--Add new book-->
 <div class="wrapper" *ngIf="addBookClicked">
     <div class="section">
+        <h2 style="font-size:25px; margin-bottom:10px;"><u>Add Book </u></h2>
         <form [formGroup]="newBookForm" (ngSubmit)="onSubmit(); newBookForm.reset();">
 
             <div class="form-outline mb-4">
                 <input type="text" id="name" name="name" formControlName="bookName" class="form-control"
                     placeholder="Book Name" />
-                <div *ngIf="bookName?.invalid && !bookName?.untouched"
-                    class="alert-danger"><p>
+                <div *ngIf="bookName?.invalid && !bookName?.untouched" class="alert-danger">
+                    <p>
                         Invalid book name
                     </p>
-            </div>
+                </div>
             </div>
 
             <div class="form-outline mb-4">
                 <input type="text" id="author" formControlName="authorName" class="form-control"
                     placeholder="Author Name" required />
-                    <div *ngIf="authorName?.invalid && !authorName?.untouched"
-                    class="alert-danger"><p>Invalid author name</p>
-            </div>
+                <div *ngIf="authorName?.invalid && !authorName?.untouched" class="alert-danger">
+                    <p>Invalid author name</p>
+                </div>
             </div>
 
             <div class="form-outline mb-4">
                 <input type="text" id="genre" formControlName="genre" class="form-control" placeholder="Genre"
                     required />
-                    <div *ngIf="genre?.invalid && !genre?.untouched"
-                    class="alert-danger"><p>invalid genre</p>
-            </div>
+                <div *ngIf="genre?.invalid && !genre?.untouched" class="alert-danger">
+                    <p>invalid genre</p>
+                </div>
             </div>
 
             <!-- Text input -->
             <div class="form-outline mb-4">
                 <textarea class="form-control" id="description" rows="4" formControlName="description"
                     placeholder="Description" required></textarea>
-                    <div *ngIf="description?.invalid && !description?.untouched"
-                    class="alert-danger"><p>invalid description</p>
-            </div>
+                <div *ngIf="description?.invalid && !description?.untouched" class="alert-danger">
+                    <p>invalid description</p>
+                </div>
             </div>
 
 
             <div class="row mb-4">
                 <div class="col">
                     <div class="form-outline">
-                        <input type="number" id="price" formControlName="price" class="form-control"
-                            placeholder="price" required />
+                        <input type="number" id="price" formControlName="price" class="form-control" placeholder="price"
+                            required />
                     </div>
-                    <div *ngIf="price?.invalid && !price?.untouched"
-                    class="alert-danger"><p>Invalid price</p>
-            </div>
+                    <div *ngIf="price?.invalid && !price?.untouched" class="alert-danger">
+                        <p>Invalid price</p>
+                    </div>
                 </div>
                 <div class="col">
                     <div class="form-outline">
                         <input type="number" id="qusntity" formControlName="quantity" class="form-control"
                             placeholder="quantity" required />
                     </div>
-                    <div *ngIf="quantity?.invalid && !quantity?.untouched"
-                    class="alert-danger"><p>Invalid quantity</p>
-            </div>
+                    <div *ngIf="quantity?.invalid && !quantity?.untouched" class="alert-danger">
+                        <p>Invalid quantity</p>
+                    </div>
                 </div>
             </div>
 
             <div class="form-outline mb-4">
                 <input type="number" id="pages" formControlName="pages" class="form-control"
                     placeholder="Number of pages" required />
-                    <div *ngIf="pages?.invalid && !pages?.untouched"
-                    class="alert-danger"><p>Invalid number of pages</p>
-            </div>
+                <div *ngIf="pages?.invalid && !pages?.untouched" class="alert-danger">
+                    <p>Invalid number of pages</p>
+                </div>
             </div>
 
             <div class="form-outline mb-4">
-                <input type="text" id="language" formControlName="language" class="form-control"
-                    placeholder="Language" required />
-                    <div *ngIf="language?.invalid && !language?.untouched"
-                    class="alert-danger"><p>Invalid language</p>
-            </div>
+                <input type="text" id="language" formControlName="language" class="form-control" placeholder="Language"
+                    required />
+                <div *ngIf="language?.invalid && !language?.untouched" class="alert-danger">
+                    <p>Invalid language</p>
+                </div>
             </div>
 
             <div class="form-outline mb-4">
                 <input type="text" id="imagesrc" formControlName="bookImgSrc" class="form-control"
                     placeholder="Cover picture link" required />
-                    <div *ngIf="bookImgSrc?.invalid && !bookImgSrc?.untouched"
-                    class="alert-danger"><p>Invalid cover link</p>
-            </div>
+                <div *ngIf="bookImgSrc?.invalid && !bookImgSrc?.untouched" class="alert-danger">
+                    <p>Invalid cover link</p>
+                </div>
             </div>
 
             <!-- add button -->
-            <button type="submit" *ngIf="newBookForm.valid" class="add-book-btn">Add Book</button>
+            <button type="submit" *ngIf="newBookForm.valid && addBookClicked" class="add-book-btn">Add Book</button>
+            <button type="submit" *ngIf="newBookForm.valid && editBookClicked" class="add-book-btn">Update Book</button>
         </form>
 
     </div>
 </div>
 
-
 <!--view All book-->
 <div class="wrapper" *ngIf="viewAllBooksClicked">
-    <div class="section-viewAllBooks" style="display:flex;flex-direction:column;">
-        <div style="margin-top:100px;"></div>
+    <div class="section-viewAllBooks">
+        <div style="margin-top:100px;display:flex; flex-direction:column;" *ngFor="let item of bookList.content,index as i">
 
-        <div class="single-book-modal" *ngFor="let item of bookList,index as i">
-            <img src={{item.book.bookImgSrc}} alt="" style="height:170px; width:120px">
-            <div class="single-book-details">
-                <h1>{{item.book.bookName}}</h1>
-                <h3>-{{item.book.authorName}}</h3>
-                <hr>
-                <p>language: {{item.book.language}}</p>
-                <p>price: {{item.book.price|currency:"INR"}}</p>
-                <div class="availability">
-                    <p>Out of stock</p>
+            <div class="single-book-modal">
+                <img src={{item.book.bookImgSrc}} alt="" id="bookImg">
+                <div class="single-book-details">
+                    <h1>{{item.book.bookName}}</h1>
+                    <h3>- {{item.book.authorName}}</h3>
+                    <hr style="margin-bottom:10px;">
+                    <p>language: {{item.book.language}}</p>
+                    <p>price: {{item.book.price|currency:"INR"}}</p>
+                    <div class="availability" *ngIf="!item.quantity">
+                        <p>Out of stock</p>
+                    </div>
+                    <div class="actions">
+                        <span
+                            style="display:flex; background-color:rgb(2, 112, 2); justify-content:center; padding:5px; color:white; width:120px;"
+                            type="button" (click)="editBook(item.book.bookName)">
+                            Update &nbsp; <img src="../../../assets/pencil.png" alt="" id="edit"></span>
+                        <br>
+                        <span
+                            style="display:flex; background-color:rgb(234, 67, 67); justify-content:center;padding:5px; margin-left: 30px; color:white;  width:120px;"
+                            type="button" (click)="deleteBook(item.book.bookName,i)"> Delete &nbsp; <img
+                                src="../../../assets/bin.png" alt="" id="delete"></span>
+                    </div>
                 </div>
-                <img src="../../../assets/pencil.png" alt="" id="edit" (click)="editBook()">
-                <img src="../../../assets/bin.png" alt="" id="delete" (click)="deleteBook(item.book.bookName,i)">
             </div>
-            <div>
-
-            </div>
+            <hr style="margin-top:20px;">
         </div>
+        <div style="display:flex; justify-content:space-around; width:200px; margin-top:20px;margin-left:450px; margin-bottom:30px;">
+            <button type="button" id="prev" (click)="reduceByOne()">◀ Previous</button>
+            <button type="button" id="next" (click)="addByOne()">Next ▶︎</button>
+        </div>
+
+
     </div>
 </div>
 
 
-<!--fav All book-->
-<div class="wrapper" *ngIf="favClicked">
+<!-- edit existing book -->
+<div class="wrapper" *ngIf="editBookClicked">
     <div class="section">
-        <form>
+
+        <h2 style="font-size:25px; margin-bottom:10px;"><u>Update Book </u></h2>
+
+        <form [formGroup]="newBookForm" (ngSubmit)="onSubmit(); newBookForm.reset();">
+
+            <div class="form-outline mb-4">
+                <input type="text" id="name" name="name" formControlName="bookName" class="form-control"
+                    placeholder="Book Name" />
+                <div *ngIf="bookName?.invalid && !bookName?.untouched" class="alert-danger">
+                    <p>
+                        Invalid book name
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="text" id="author" formControlName="authorName" class="form-control"
+                    placeholder="Author Name" required />
+                <div *ngIf="authorName?.invalid && !authorName?.untouched" class="alert-danger">
+                    <p>Invalid author name</p>
+                </div>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="text" id="genre" formControlName="genre" class="form-control" placeholder="Genre"
+                    required />
+                <div *ngIf="genre?.invalid && !genre?.untouched" class="alert-danger">
+                    <p>invalid genre</p>
+                </div>
+            </div>
+
             <!-- Text input -->
             <div class="form-outline mb-4">
-                <textarea class="form-control" id="form6Example7" rows="4" placeholder="Description"></textarea>
-
-                <!-- <label class="form-label" for="form6Example3">Company name</label> -->
+                <textarea class="form-control" id="description" rows="4" formControlName="description"
+                    placeholder="Description" required></textarea>
+                <div *ngIf="description?.invalid && !description?.untouched" class="alert-danger">
+                    <p>invalid description</p>
+                </div>
             </div>
 
-            <!-- page number input -->
 
-            <div class="form-outline mb-4">
-                <input type="number" id="form6Example5" class="form-control" placeholder="Number of pages" />
-                <!-- <label class="form-label" for="form6Example5">Number of pages</label> -->
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-outline">
+                        <input type="number" id="price" formControlName="price" class="form-control" placeholder="price"
+                            required />
+                    </div>
+                    <div *ngIf="price?.invalid && !price?.untouched" class="alert-danger">
+                        <p>Invalid price</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-outline">
+                        <input type="number" id="qusntity" formControlName="quantity" class="form-control"
+                            placeholder="quantity" required />
+                    </div>
+                    <div *ngIf="quantity?.invalid && !quantity?.untouched" class="alert-danger">
+                        <p>Invalid quantity</p>
+                    </div>
+                </div>
             </div>
 
-            <!-- language input -->
             <div class="form-outline mb-4">
-                <input type="number" id="form6Example6" class="form-control" placeholder="Language" />
-                <!-- <label class="form-label" for="form6Example6">Price</label> -->
+                <input type="number" id="pages" formControlName="pages" class="form-control"
+                    placeholder="Number of pages" required />
+                <div *ngIf="pages?.invalid && !pages?.untouched" class="alert-danger">
+                    <p>Invalid number of pages</p>
+                </div>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="text" id="language" formControlName="language" class="form-control" placeholder="Language"
+                    required />
+                <div *ngIf="language?.invalid && !language?.untouched" class="alert-danger">
+                    <p>Invalid language</p>
+                </div>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="text" id="imagesrc" formControlName="bookImgSrc" class="form-control"
+                    placeholder="Cover picture link" required />
+                <div *ngIf="bookImgSrc?.invalid && !bookImgSrc?.untouched" class="alert-danger">
+                    <p>Invalid cover link</p>
+                </div>
             </div>
 
             <!-- add button -->
-            <button type="submit" class="add-book-btn">Add Book</button>
+            <button type="submit" *ngIf="newBookForm.valid" class="add-book-btn">Update Book</button>
         </form>
 
     </div>

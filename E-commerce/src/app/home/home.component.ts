@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AppServiceService } from '../app-service.service';
-import { SearchService } from '../search.service';
+import { NavigationExtras, Router } from '@angular/router';
+import { AppServiceService } from '../services/app-service.service';
+import { AuthenticationService } from '../services/authentication.service';
+import { SearchService } from '../services/search.service';
 
 @Component({
   selector: 'app-home',
@@ -14,13 +15,30 @@ export class HomeComponent implements OnInit {
   latestReleases: Array<any> = [];
   mostRecommended: Array<any> = [];
 
+  authorsList = [
+    'J.K. Rowling',
+    'Chetan Bhagat',
+    'Yann Martel',
+    'Alexandre Dumas',
+    'William Shakespeare',
+  ];
+
+  goToBookList(authorName:string){
+    if(this.authService.isLoggedIn()){
+      this.router.navigate(['home/user/category',{authorName:authorName}])
+    }else{
+      this.router.navigate(['category',{authorName:authorName}]);
+    }
+  }
+
   searchedWord: string = '';
 
   constructor(
     private service: AppServiceService,
     private router: Router,
-    private searchService: SearchService
-  ) {}
+    private searchService: SearchService,
+    private authService: AuthenticationService
+  ) { }
 
   ngOnInit(): void {
     this.service.getAllBooks().subscribe({
@@ -56,11 +74,12 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  goToBookForm() {
-    this.router.navigateByUrl('bookForm');
+  goToBookDetailPage(bookName: string) {
+    if(this.authService.isLoggedIn()){
+      this.router.navigate(['home/user/detail',{bookName: bookName}]);
+    }else{
+      this.router.navigate(['bookDescription', { bookName: bookName }]);
+    }
   }
 
-  goToBookDetailPage(bookName: string) {
-    this.router.navigate(['bookDescription', { bookName: bookName }]);
-  }
 }

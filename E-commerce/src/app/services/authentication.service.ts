@@ -18,8 +18,26 @@ export class AuthenticationService {
     return this.http.post(this.baseUrl + "/signup", userDetail);
   }
 
+  isUserExist(username:string){
+    return this.http.get(this.baseUrl+"/userExistOrNot?username="+username);
+  }
+
+  isUserLoggedIn() {
+    if (localStorage.getItem("role") == "User") {
+      return true;
+    }
+    return false;
+  }
+
+  isAdminLoggedIn() {
+    if (localStorage.getItem("role") == "Admin") {
+      return true;
+    }
+    return false;
+  }
+
   isLoggedIn() {
-    return !!localStorage.getItem("key");
+    return Boolean(localStorage.getItem("token"));
   }
 
 

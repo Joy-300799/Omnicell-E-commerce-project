@@ -15,16 +15,18 @@ export class UserServiceService {
   }
 
   removeBookFromCart(username: string, bookName: string) {
-    return this.http.delete(this.baseUrl + "/removeBookFromCart?username="
+    console.log(username);
+    console.log(bookName);
+    return this.http.get(this.baseUrl + "/removeBookFromCart?username="
       + username + "&bookName=" + bookName, { responseType: "text" });
   }
 
   buyAllBookOfCart(username: string) {
-    return this.http.delete(this.baseUrl + "/buyAllBookInCart?username=" + username, { responseType: "text" });
+    return this.http.get(this.baseUrl + "/buyAllBookInCart?username=" + username, { responseType: "text" });
   }
 
   addBookToCart(username: string, bookName: string) {
-    return this.http.post(this.baseUrl + "/addBookInCart?username=" + username + "&bookName=" + bookName, null);
+    return this.http.post(this.baseUrl + "/addBookInCart?username=" + username + "&bookName=" + bookName, null,{responseType: "text"});
   }
 
 }

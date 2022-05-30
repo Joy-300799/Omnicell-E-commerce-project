@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { throttleTime } from 'rxjs';
-import { UserServiceService } from '../user-service.service';
+import { UserServiceService } from '../services/user-service.service';
 
 @Component({
   selector: 'app-cart',
@@ -14,13 +13,16 @@ export class CartComponent implements OnInit {
   overlay: boolean = false;
   checkout: boolean = false;
 
-  username: string = '';
   cart: any;
   totalBill = 0;
+  username = localStorage.getItem("username");
+  isEmptyCart:boolean = true;
 
   constructor(private userService: UserServiceService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getUserCart();
+  }
 
   cardPayment() {
     this.cardPay = !this.cardPay;
@@ -41,25 +43,37 @@ export class CartComponent implements OnInit {
   }
 
   getUserCart() {
-    this.userService.getUserCart(this.username).subscribe({
+    this.userService.getUserCart(localStorage.getItem("username")||"").subscribe({
       next: (data) => {
         console.log(data);
         this.cart = data;
         this.billAmount();
+        if(this.cart.length){
+          this.isEmptyCart = false;
+        }       
       },
       error: (error) => console.log(error),
     })
   }
-  deleteBookFromCart(username: string, bookName: string, index: number) {
-    this.userService.removeBookFromCart(username, bookName).subscribe({
+
+  deleteBookFromCart(bookName: string, index: number) {
+    this.userService.removeBookFromCart(localStorage.getItem("username")||"", bookName).subscribe({
       next: (data) => {
         console.log(data);
         this.cart.splice(index, 1);
         console.log(this.cart);
+        this.totalBill = 0;
+        this.billAmount();
+        if(this.cart.length){
+          this.isEmptyCart = false;
+        }else{
+          this.isEmptyCart = true;
+        }
       },
       error: (error) => console.log(error),
     })
   }
+
   billAmount() {
     for (let book of this.cart) {
       this.totalBill += book.price;
@@ -67,7 +81,7 @@ export class CartComponent implements OnInit {
   }
 
   toggleCheckout() {
-    this.userService.buyAllBookOfCart(this.username).subscribe({
+    this.userService.buyAllBookOfCart(localStorage.getItem("username")||"").subscribe({
       next: () => {
         this.checkout = true;
         this.cart = [];

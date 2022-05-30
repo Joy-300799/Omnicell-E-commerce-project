@@ -9,13 +9,14 @@
             </header>
         </div>
     </section>
-    
+
     <div *ngIf="searchedWord.length">
         <hr style="margin-top:20px">
-        <h1 class="category-header">Searched Books</h1>
+        <h1 class="category-header">Search Results</h1>
         <hr style="margin-bottom:20px">
 
         <div class="books-container-latest" style="display:flex;">
+            <p *ngIf="!searchList.length" style="font-size:20px;">No books found...</p>
 
             <div class="img-div-latest" *ngFor="let item of searchList">
 
@@ -36,6 +37,36 @@
                 alt="">
         </div>
 
+    </div>
+
+    <hr style="margin-top:20px">
+    <h1 class="category-header">Popular Authors</h1>
+    <hr style="margin-bottom:20px">
+    <div class="books-container-latest">
+        <div class="img-div-latest" *ngFor="let author of authorsList">
+            <div>
+                <p class="authorP"
+                     (click)="goToBookList(author)">
+                    {{author}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div style="position:absolute; top:125%; color:white; margin-left:20px;">
+            <h1 style="font-size:50px;">Book festival is Live 🔴</h1>
+            <p style="font-size:20px;"><i>Explore the categories and grab your favorite books before it gets sold.</i>
+            </p>
+            <div style="background-color:white; height:2px; width:auto; border:1px solid white;"></div>
+            <br>
+            <button type="button"
+                style="background-color:grey; padding:5px; height:40px; width:120px; border-radius:30px;" routerLink="category">Explore
+                now</button>
+            <br>
+        </div>
+
+        <img src="https://t3.ftcdn.net/jpg/02/94/59/32/240_F_294593202_17ZRq7bu9P1Q9oxweQbtmKOsjCfLObYF.jpg" alt=""
+            style="height:500px; width:100%">
     </div>
 
     <hr style="margin-top:20px">
