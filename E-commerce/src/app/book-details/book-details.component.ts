@@ -57,7 +57,4 @@ export class BookDetailsComponent implements OnInit {
       }, 1500);
     }
   }
-
-
-
 }
