@@ -15,8 +15,8 @@ export class CartComponent implements OnInit {
 
   cart: any;
   totalBill = 0;
-  username = localStorage.getItem("username");
-  isEmptyCart:boolean = true;
+  username = localStorage.getItem('username');
+  isEmptyCart: boolean = true;
 
   constructor(private userService: UserServiceService) {}
 
@@ -43,35 +43,39 @@ export class CartComponent implements OnInit {
   }
 
   getUserCart() {
-    this.userService.getUserCart(localStorage.getItem("username")||"").subscribe({
-      next: (data) => {
-        console.log(data);
-        this.cart = data;
-        this.billAmount();
-        if(this.cart.length){
-          this.isEmptyCart = false;
-        }       
-      },
-      error: (error) => console.log(error),
-    })
+    this.userService
+      .getUserCart(localStorage.getItem('username') || '')
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          this.cart = data;
+          this.billAmount();
+          if (this.cart.length) {
+            this.isEmptyCart = false;
+          }
+        },
+        error: (error) => console.log(error),
+      });
   }
 
   deleteBookFromCart(bookName: string, index: number) {
-    this.userService.removeBookFromCart(localStorage.getItem("username")||"", bookName).subscribe({
-      next: (data) => {
-        console.log(data);
-        this.cart.splice(index, 1);
-        console.log(this.cart);
-        this.totalBill = 0;
-        this.billAmount();
-        if(this.cart.length){
-          this.isEmptyCart = false;
-        }else{
-          this.isEmptyCart = true;
-        }
-      },
-      error: (error) => console.log(error),
-    })
+    this.userService
+      .removeBookFromCart(localStorage.getItem('username') || '', bookName)
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          this.cart.splice(index, 1);
+          console.log(this.cart);
+          this.totalBill = 0;
+          this.billAmount();
+          if (this.cart.length) {
+            this.isEmptyCart = false;
+          } else {
+            this.isEmptyCart = true;
+          }
+        },
+        error: (error) => console.log(error),
+      });
   }
 
   billAmount() {
@@ -81,12 +85,14 @@ export class CartComponent implements OnInit {
   }
 
   toggleCheckout() {
-    this.userService.buyAllBookOfCart(localStorage.getItem("username")||"").subscribe({
-      next: () => {
-        this.checkout = true;
-        this.cart = [];
-      },
-      error: (error) => console.log(error),
-    });
+    this.userService
+      .buyAllBookOfCart(localStorage.getItem('username') || '')
+      .subscribe({
+        next: () => {
+          this.checkout = true;
+          this.cart = [];
+        },
+        error: (error) => console.log(error),
+      });
   }
 }

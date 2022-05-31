@@ -1,14 +1,13 @@
+<div>
+    <section class="h-100 h-custom" style="background-color: rgb(255, 255, 255);">
 
-<div >
-<section class="h-100 h-custom" style="background-color: rgb(255, 255, 255);">
+        <div class="container py-5 h-100">
 
-    <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
 
-        <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col">
 
-            <div class="col">
-
-                <div class="card">
+                    <div class="card">
 
                         <div class="card-body">
 
@@ -32,9 +31,8 @@
                                                 <div class="d-flex justify-content-between">
                                                     <div class="d-flex flex-row align-items-center">
                                                         <div>
-                                                            <img src={{book.bookImgSrc}}
-                                                                class="img-fluid rounded-3" alt="Shopping item"
-                                                                style="width: 65px;">
+                                                            <img src={{book.bookImgSrc}} class="img-fluid rounded-3"
+                                                                alt="Shopping item" style="width: 65px;">
                                                         </div>
                                                         <div class="ms-3">
                                                             <h5>{{book.bookName}}</h5>
@@ -48,18 +46,19 @@
                                                         <div style="width: 80px;">
                                                             <h5 class="mb-0">{{book.price|currency:"INR"}}</h5>
                                                         </div>
-                                                        <a (click)="deleteBookFromCart(book.bookName,i)" style="color: #cecece;"><img src="../../assets/bin.png"
+                                                        <a (click)="deleteBookFromCart(book.bookName,i)"
+                                                            style="color: #cecece;"><img src="../../assets/bin.png"
                                                                 alt="" style="height:30px"></a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    
 
-                                    
 
-                                    
+
+
+
                                     <hr style="margin-top:20px;">
                                     <h3 style="font-size:20px; margin-top:20px;" type="button"><a style="display:flex;"
                                             routerLink=""><img src="../../assets/back-button.png" alt=""
@@ -131,35 +130,6 @@
                                                         placeholder="Ex. 123/A church street, New York" />
                                                 </div>
 
-                                                <!-- <div class="row mb-4">
-<<<<<<< HEAD
-                                                <div class="col-md-6">
-                                                    <div class="form-outline form-white">
-                                                        <input type="text" id="typeExp"
-                                                            class="form-control form-control-lg" placeholder="MM/YYYY"
-                                                            size="7" id="exp" minlength="7" maxlength="7" />
-                                                        <label class="form-label" for="typeExp">Expiration</label>
-=======
-                                                    <div class="col-md-6">
-                                                        <div class="form-outline form-white">
-                                                            <input type="text" id="typeExp"
-                                                                class="form-control form-control-lg" placeholder="MM/YYYY"
-                                                                size="7" id="exp" minlength="7" maxlength="7" />
-                                                            <label class="form-label" for="typeExp">Expiration</label>
-                                                        </div>
->>>>>>> c5daffcaeafae8d01d788a960981f0bb1d39bbb3
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-outline form-white">
-                                                            <input type="password" id="typeText"
-                                                                class="form-control form-control-lg"
-                                                                placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3"
-                                                                maxlength="3" />
-                                                            <label class="form-label" for="typeText">Cvv</label>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
-
                                             </form>
 
                                             <hr class="my-4">
@@ -201,13 +171,13 @@
                 </div>
             </div>
         </div>
-</section>
+    </section>
 
-<div class="order-placed" *ngIf="checkout">
-    <p *ngIf="!isEmptyCart">Order placed successfully!!</p>
-    <p *ngIf="isEmptyCart">Please add some book</p>
-    <img src="../../assets/order.png" alt="">
-    <button type="button" routerLink="">Continue shopping</button>
-</div>
+    <div class="order-placed" *ngIf="checkout">
+        <p *ngIf="!isEmptyCart">Order placed successfully!!</p>
+        <p *ngIf="isEmptyCart">Please add some book</p>
+        <img src="../../assets/order.png" alt="">
+        <button type="button" routerLink="">Continue shopping</button>
+    </div>
 
 </div>

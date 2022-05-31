@@ -12,7 +12,6 @@ import { AppServiceService } from '../../services/app-service.service';
 export class AdminDashboardComponent implements OnInit {
   addBookClicked: boolean = false;
   viewAllBooksClicked: boolean = false;
-  favClicked: boolean = false;
   signOutClicked: boolean = false;
   editBookClicked = false;
 
@@ -34,7 +33,6 @@ export class AdminDashboardComponent implements OnInit {
   toggleAddBook() {
     this.addBookClicked = true;
     this.viewAllBooksClicked = false;
-    this.favClicked = false;
     this.editBookClicked = false;
 
     this.newBookForm = new FormGroup({
@@ -80,14 +78,6 @@ export class AdminDashboardComponent implements OnInit {
   toggleViewBooks() {
     this.viewAllBooksClicked = true;
     this.addBookClicked = false;
-    this.favClicked = false;
-    this.editBookClicked = false;
-  }
-
-  toggleFav() {
-    this.favClicked = true;
-    this.addBookClicked = false;
-    this.viewAllBooksClicked = false;
     this.editBookClicked = false;
   }
 
@@ -147,7 +137,6 @@ export class AdminDashboardComponent implements OnInit {
 
   editBook(bookName: string) {
     this.addBookClicked = false;
-    this.favClicked = false;
     this.viewAllBooksClicked = false;
     this.editBookClicked = !this.editBookClicked;
 
@@ -192,13 +181,7 @@ export class AdminDashboardComponent implements OnInit {
 
   deleteBook(bookName: string, index: number) {
     this.service.deleteBook(bookName).subscribe({
-      next: (data) => {
-        // this.bookList=this.bookList.splice(index, 1),
-        // console.log(data)
-        // this.service.getAllBooks().subscribe({
-        //   next:(data)=>{this.bookList=data}
-        // })
-      },
+      next: (data) => {},
       error: (error) => {
         console.log(error);
       },

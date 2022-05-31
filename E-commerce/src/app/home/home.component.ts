@@ -23,11 +23,11 @@ export class HomeComponent implements OnInit {
     'William Shakespeare',
   ];
 
-  goToBookList(authorName:string){
-    if(this.authService.isLoggedIn()){
-      this.router.navigate(['home/user/category',{authorName:authorName}])
-    }else{
-      this.router.navigate(['category',{authorName:authorName}]);
+  goToBookList(authorName: string) {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['home/user/category', { authorName: authorName }]);
+    } else {
+      this.router.navigate(['category', { authorName: authorName }]);
     }
   }
 
@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private searchService: SearchService,
     private authService: AuthenticationService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.service.getAllBooks().subscribe({
@@ -75,11 +75,10 @@ export class HomeComponent implements OnInit {
   }
 
   goToBookDetailPage(bookName: string) {
-    if(this.authService.isLoggedIn()){
-      this.router.navigate(['home/user/detail',{bookName: bookName}]);
-    }else{
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['home/user/detail', { bookName: bookName }]);
+    } else {
       this.router.navigate(['bookDescription', { bookName: bookName }]);
     }
   }
-
 }

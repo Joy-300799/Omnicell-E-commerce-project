@@ -10,9 +10,11 @@ import { SearchService } from '../services/search.service';
   styleUrls: ['./user-login.component.css'],
 })
 export class UserLoginComponent implements OnInit {
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private service: AuthenticationService,
-    private logservice: SearchService) { }
+    private logservice: SearchService
+  ) {}
   flag: boolean = true;
   username: any;
   firstPassword: any;
@@ -36,7 +38,7 @@ export class UserLoginComponent implements OnInit {
           console.log(this.userAlreadyExistWarning);
         },
         error: (error) => console.log(error),
-      })
+      });
     }
   }
 
@@ -47,29 +49,38 @@ export class UserLoginComponent implements OnInit {
         next: (res) => {
           let obj = JSON.parse(res);
           console.log(obj.response);
-          if (obj.role == "User") {
-            localStorage.setItem("token", obj.response);
-            localStorage.setItem("username", this.username);
-            localStorage.setItem("role", obj.role);
+          if (obj.role == 'User') {
+            localStorage.setItem('token', obj.response);
+            localStorage.setItem('username', this.username);
+            localStorage.setItem('role', obj.role);
             this.logservice.changeLoginToLogout();
-            window.location.href = "/home/user";
-          }else{
+            window.location.href = '/home/user';
+          } else {
             this.incorrectIdPasswordWarning = true;
           }
         },
-        error: (error) => {console.log(error);this.incorrectIdPasswordWarning = true},
+        error: (error) => {
+          console.log(error);
+          this.incorrectIdPasswordWarning = true;
+        },
       });
   }
 
   handleSignUp(): void {
     if (this.firstPassword === this.secondPassword) {
       this.service
-        .signUp(new SignUpDetails(this.username, this.firstPassword, this.phoneNumber, this.emailId))
+        .signUp(
+          new SignUpDetails(
+            this.username,
+            this.firstPassword,
+            this.phoneNumber,
+            this.emailId
+          )
+        )
         .subscribe({
           next: (response) => {
             console.log(response);
             this.resetFormFields();
-
           },
           error: (error) => console.log(error),
         });
@@ -89,11 +100,11 @@ export class UserLoginComponent implements OnInit {
   }
 
   resetFormFields() {
-    this.username = "";
-    this.firstPassword = "";
-    this.secondPassword = "";
-    this.phoneNumber = "";
-    this.emailId = "";
+    this.username = '';
+    this.firstPassword = '';
+    this.secondPassword = '';
+    this.phoneNumber = '';
+    this.emailId = '';
   }
 }
 
@@ -103,7 +114,12 @@ class SignUpDetails {
   phoneNumber: number;
   email: string;
 
-  constructor(username: string, password: string, phoneNumber: number, email: string) {
+  constructor(
+    username: string,
+    password: string,
+    phoneNumber: number,
+    email: string
+  ) {
     this.username = username;
     this.password = password;
     this.phoneNumber = phoneNumber;

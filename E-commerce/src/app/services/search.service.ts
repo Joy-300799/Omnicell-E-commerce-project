@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SearchService {
-
-  private searchword = new BehaviorSubject<string>("");
+  private searchword = new BehaviorSubject<string>('');
   currentword = this.searchword.asObservable();
 
   private login = new BehaviorSubject<boolean>(true);
@@ -18,8 +17,7 @@ export class SearchService {
   private adminLogOut = new BehaviorSubject<Boolean>(true);
   changeAfterAdminLogOut = this.adminLogOut.asObservable();
 
-
-  constructor() { }
+  constructor() {}
 
   search(keyword: string) {
     this.searchword.next(keyword);
@@ -30,14 +28,13 @@ export class SearchService {
     return this.login.value;
   }
 
-  hideIconAfterAdminLogin(){
+  hideIconAfterAdminLogin() {
     this.adminLogin.next(false);
     return this.adminLogin.value;
   }
 
-  showIconAfterAdminLogOut(){
+  showIconAfterAdminLogOut() {
     this.adminLogOut.next(false);
     return this.adminLogOut.value;
   }
-  
 }

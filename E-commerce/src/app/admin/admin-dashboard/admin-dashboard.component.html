@@ -10,8 +10,8 @@
                         class="action-logo">&nbsp; &nbsp; &nbsp;
                     &nbsp; Books List</span></a></li>
 
-        <li style="margin-top:140%;" routerLink="/admin" (click)="logOut()"><a><span><img src="../../../assets/log-out.png" alt=""
-                        class="action-logo">&nbsp;
+        <li style="margin-top:140%;" routerLink="/admin" (click)="logOut()"><a><span><img
+                        src="../../../assets/log-out.png" alt="" class="action-logo">&nbsp;
                     &nbsp; &nbsp; &nbsp; Sign
                     Out</span></a></li>
     </ul>
@@ -115,7 +115,8 @@
 <!--view All book-->
 <div class="wrapper" *ngIf="viewAllBooksClicked">
     <div class="section-viewAllBooks">
-        <div style="margin-top:100px;display:flex; flex-direction:column;" *ngFor="let item of bookList.content,index as i">
+        <div style="margin-top:100px;display:flex; flex-direction:column;"
+            *ngFor="let item of bookList.content,index as i">
 
             <div class="single-book-modal">
                 <img src={{item.book.bookImgSrc}} alt="" id="bookImg">
@@ -143,7 +144,8 @@
             </div>
             <hr style="margin-top:20px;">
         </div>
-        <div style="display:flex; justify-content:space-around; width:200px; margin-top:20px;margin-left:450px; margin-bottom:30px;">
+        <div
+            style="display:flex; justify-content:space-around; width:200px; margin-top:20px;margin-left:450px; margin-bottom:30px;">
             <button type="button" id="prev" (click)="reduceByOne()">◀ Previous</button>
             <button type="button" id="next" (click)="addByOne()">Next ▶︎</button>
         </div>
@@ -151,7 +153,6 @@
 
     </div>
 </div>
-
 
 <!-- edit existing book -->
 <div class="wrapper" *ngIf="editBookClicked">

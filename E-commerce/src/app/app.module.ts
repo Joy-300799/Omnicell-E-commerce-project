@@ -15,7 +15,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { CartComponent } from './cart/cart.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { CategoryComponent } from './category/category.component';
-import { AuthguardGuard } from '../app/guard/authguard.guard';
+import { AuthguardGuard } from './guard/authguard.guard';
 import { AuthorizeInterceptor } from './authorize.interceptor';
 
 @NgModule({
@@ -41,7 +41,16 @@ import { AuthorizeInterceptor } from './authorize.interceptor';
     FontAwesomeModule,
     ReactiveFormsModule,
   ],
-  providers: [AuthguardGuard, [{ provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }]],
+  providers: [
+    AuthguardGuard,
+    [
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: AuthorizeInterceptor,
+        multi: true,
+      },
+    ],
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

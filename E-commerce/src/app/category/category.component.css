@@ -152,24 +152,24 @@ h3 {
   text-align: Justify;
 }
 
-.actions{
-  display:flex;
+.actions {
+  display: flex;
   justify-content: space-around;
 }
 
-.filter{
-  padding:5px;
-  width:180px;
-  background-image:linear-gradient(135deg, gold, rgb(198, 87, 87))
+.filter {
+  padding: 5px;
+  width: 180px;
+  background-image: linear-gradient(135deg, gold, rgb(198, 87, 87))
 }
 
-.filter:hover{
-  padding:2px;
-  background-image:linear-gradient(135deg, rgb(33, 33, 33), rgb(96, 96, 96));
-  color:white;
-  transition:0.2s ease;
+.filter:hover {
+  padding: 2px;
+  background-image: linear-gradient(135deg, rgb(33, 33, 33), rgb(96, 96, 96));
+  color: white;
+  transition: 0.2s ease;
 }
 
-.input{
-  width:50px;
+.input {
+  width: 50px;
 }
